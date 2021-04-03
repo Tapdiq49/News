@@ -39,7 +39,7 @@ namespace ApiService.Controllers.v1
             {
                 var news = await _newsService.GetNews(id);
                 return Ok(news);
-            }catch(NewsNotFoundException e)
+            }catch(NotFoundException e)
             {
                 return StatusCode(404, new { e.Message });
             }

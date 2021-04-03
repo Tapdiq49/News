@@ -1,4 +1,6 @@
-﻿namespace Repository.Data.Entities
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace Repository.Data.Entities
 {
     public class NewsPhoto : BaseEntity
     {

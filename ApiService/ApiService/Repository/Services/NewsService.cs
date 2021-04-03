@@ -18,7 +18,7 @@ namespace Repository.Services
         public async Task<NewsResponse> GetAllNews(int viewCount)
         {
             var count = viewCount + 20;
-            var news = await _context.News.Where(p => !p.SoftDeleted).Include(e=>e.Photos).Include(e=>e.Category).Skip(viewCount).Take(count).ToListAsync();
+            var news = await _context.News.OrderByDescending(p=>p.CreatedAt).Where(p => !p.SoftDeleted).Include(e=>e.Photos).Include(e=>e.Category).Skip(viewCount).Take(count).ToListAsync();
             var res = new NewsResponse(news, viewCount + news.Count);
             return res;
         }
@@ -33,7 +33,7 @@ namespace Repository.Services
             }
             else
             {
-                throw new NewsNotFoundException("Xeber tapılmadı");
+                throw new NotFoundException("Xeber tapılmadı");
             }
 
             return view;

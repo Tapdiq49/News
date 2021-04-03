@@ -7,5 +7,6 @@ namespace Repository.Services
     public interface ICategoryService
     {
         Task<IEnumerable<Category>> GetAllCategories();
+        Task<Category> GetCategory(int id);
     }
 }
