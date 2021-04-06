@@ -11,5 +11,8 @@ namespace Repository.Services
         Task<News> GetNews(int id);
         Task<IEnumerable<News>> GetCategoryAllNews(int categoryId);
 
+        Task<IEnumerable<News>> GetSearchByTitleLike(string search);
+
+        Task<IEnumerable<News>> GetLastNews();
     }
 }

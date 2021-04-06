@@ -50,8 +50,15 @@ namespace ApiService.Controllers.v1
         [Route("{categoryId:int}/news")]
         public async Task<IActionResult> GetCategoryAllNews([FromRoute] int categoryId)
         {
-            var news = await _newsService.GetCategoryAllNews(categoryId);
-            return Ok(news);
+            try
+            {
+                var news = await _newsService.GetCategoryAllNews(categoryId);
+                return Ok(news);
+            }
+            catch (NotFoundException e)
+            {
+                return StatusCode(404, new { e.Message });
+            }
         }
     }
 }

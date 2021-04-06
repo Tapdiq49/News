@@ -45,7 +45,21 @@ namespace ApiService.Controllers.v1
                 return StatusCode(404, new { e.Message });
             }
         }
+        [HttpGet]
+        [Route("search")]
+        public async Task<IActionResult> GetSearchByTitleLike([FromBody]SearchResource search)
+        {
+            var news = await _newsService.GetSearchByTitleLike(search.search);
+            return Ok(news);
+        }
 
+        [HttpGet]
+        [Route("lastnews")]
+        public async Task<IActionResult> GetLastNews()
+        {
+            var news = await _newsService.GetLastNews();
+            return Ok(news);
+        }
 
     }
 }

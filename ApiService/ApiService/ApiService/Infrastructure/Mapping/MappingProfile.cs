@@ -21,6 +21,7 @@ namespace ApiService.Infrastructure.Mapping
             CreateMap<Contact, ContactResource>();
             CreateMap<NewsResponse, NewsResponseResource>();
             CreateMap<About, AboutResource>();
+            CreateMap<NewsResponse, LastNewsResource>();
         }
     }
 }

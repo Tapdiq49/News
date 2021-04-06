@@ -207,9 +207,6 @@ namespace Repository.Migrations
 
                     b.HasIndex("NewsId");
 
-                    b.HasIndex("OrderBy")
-                        .IsUnique();
-
                     b.ToTable("NewsPhotos");
                 });
 

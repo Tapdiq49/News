@@ -10,8 +10,8 @@ using Repository.Data;
 namespace Repository.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20210403083832_UpdatePropertyOrderBy")]
-    partial class UpdatePropertyOrderBy
+    [Migration("20210406103430_InitialCreate")]
+    partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -208,9 +208,6 @@ namespace Repository.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("NewsId");
-
-                    b.HasIndex("OrderBy")
-                        .IsUnique();
 
                     b.ToTable("NewsPhotos");
                 });
