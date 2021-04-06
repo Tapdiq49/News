@@ -24,7 +24,7 @@ namespace ApiService.Controllers.v1
 
         [HttpGet]
         [Route("")]
-        public async Task<IActionResult> GetAllNews([FromQuery]int viewCount)
+        public async Task<IActionResult> GetAllNews([FromQuery] int viewCount)
         {
             var news = await _newsService.GetAllNews(viewCount);
             var newsResource = _mapper.Map<NewsResponse, NewsResponseResource>(news);
@@ -33,16 +33,19 @@ namespace ApiService.Controllers.v1
 
         [HttpGet]
         [Route("{id}")]
-        public async Task<IActionResult> GetNews([FromRoute]int id)
+        public async Task<IActionResult> GetNews([FromRoute] int id)
         {
             try
             {
                 var news = await _newsService.GetNews(id);
                 return Ok(news);
-            }catch(NotFoundException e)
+            }
+            catch (NotFoundException e)
             {
                 return StatusCode(404, new { e.Message });
             }
         }
+
+
     }
 }

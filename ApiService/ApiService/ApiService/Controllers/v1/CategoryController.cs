@@ -15,9 +15,11 @@ namespace ApiService.Controllers.v1
     public class CategoryController : BaseController
     {
         private readonly ICategoryService _categoryService;
-        public CategoryController(ICategoryService categoryService)
+        private readonly INewsService _newsService;
+        public CategoryController(ICategoryService categoryService, INewsService newsService)
         {
             _categoryService = categoryService;
+            _newsService = newsService;
         }
 
         [HttpGet]
@@ -32,7 +34,7 @@ namespace ApiService.Controllers.v1
 
         [HttpGet]
         [Route("{id}")]
-        public async Task<IActionResult> GetCategory([FromRoute]int id)
+        public async Task<IActionResult> GetCategory([FromRoute] int id)
         {
             try
             {
@@ -43,6 +45,13 @@ namespace ApiService.Controllers.v1
             {
                 return StatusCode(404, new { e.Message });
             }
+        }
+        [HttpGet]
+        [Route("{categoryId:int}/news")]
+        public async Task<IActionResult> GetCategoryAllNews([FromRoute] int categoryId)
+        {
+            var news = await _newsService.GetCategoryAllNews(categoryId);
+            return Ok(news);
         }
     }
 }

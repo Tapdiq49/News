@@ -3,6 +3,7 @@ using Repository.Data;
 using Repository.Data.Entities;
 using Repository.Exceptions;
 using Repository.Models;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -23,6 +24,11 @@ namespace Repository.Services
             return res;
         }
 
+        public async Task<IEnumerable<News>> GetCategoryAllNews(int categoryId)
+        {
+            return await _context.News.Where(e => e.CategoryId == categoryId || e.Category.ParentId == categoryId).Include(e => e.Category).ToListAsync();
+        }
+
         public async Task<News> GetNews(int id)
         {
             var view = await _context.News.FirstOrDefaultAsync(p => !p.SoftDeleted && p.Id==id);
@@ -38,5 +44,6 @@ namespace Repository.Services
 
             return view;
         }
+
     }
 }
