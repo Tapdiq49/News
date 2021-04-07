@@ -5,10 +5,6 @@ using ApiService.Resources.NewsCategory;
 using AutoMapper;
 using Repository.Data.Entities;
 using Repository.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace ApiService.Infrastructure.Mapping
 {
@@ -21,7 +17,6 @@ namespace ApiService.Infrastructure.Mapping
             CreateMap<Contact, ContactResource>();
             CreateMap<NewsResponse, NewsResponseResource>();
             CreateMap<About, AboutResource>();
-            CreateMap<NewsResponse, LastNewsResource>();
         }
     }
 }

@@ -3,6 +3,7 @@ using Repository.Data;
 using Repository.Data.Entities;
 using Repository.Exceptions;
 using Repository.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -56,5 +57,25 @@ namespace Repository.Services
         {
             return await _context.News.Where(e => !e.SoftDeleted && e.Title.Contains(search)).Take(30).ToListAsync();
         }
+
+        public async Task<IEnumerable<News>> GetSliderByNews()
+        {
+            return await _context.News.OrderByDescending(e => e.View).Where(e => !e.SoftDeleted && e.CreatedAt >= DateTime.Now.AddHours(-24)).Take(5).ToListAsync();
+        }
+
+        //public Task LikeDislike(string token, int newsId)
+        //{
+        //    var likeDislike =  _context.LikesDislikes.FirstOrDefault(e => !e.SoftDeleted && e.Token == token && e.NewsId == newsId);
+        //    var news =  _context.News.FirstOrDefault(e => !e.SoftDeleted && e.Id == newsId);
+        //    if (news == null) throw new NotFoundException("Xeber tapılmadı");
+
+        //    if (news != null)
+        //    {
+        //        news.Like += 1;
+        //        news.Dislike += 1;
+        //        _context.SaveChanges();
+
+        //    }
+        //}
     }
 }

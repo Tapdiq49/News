@@ -14,5 +14,6 @@ namespace Repository.Data.Entities
         public string VideoLink { get; set; }
         public ICollection<NewsPhoto> Photos { get; set; }
         public Category Category { get; set; }
+
     }
 }

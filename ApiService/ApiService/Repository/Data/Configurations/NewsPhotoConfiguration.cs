@@ -8,7 +8,7 @@ namespace Repository.Data.Configurations
     {
         public void Configure(EntityTypeBuilder<NewsPhoto> builder)
         {
-            builder.Property(e => e.OrderBy).IsRequired();
+            builder.HasIndex(e => new { e.OrderBy, e.NewsId }).IsUnique();
             builder.Property(e => e.Main).IsRequired();
             builder.Property(e => e.Image).HasMaxLength(150).IsRequired();
 

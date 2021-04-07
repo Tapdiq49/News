@@ -19,7 +19,7 @@ namespace ApiService.Controllers.v1
         public NewsController(INewsService newsService)
         {
             _newsService = newsService;
-            
+
         }
 
         [HttpGet]
@@ -47,7 +47,7 @@ namespace ApiService.Controllers.v1
         }
         [HttpGet]
         [Route("search")]
-        public async Task<IActionResult> GetSearchByTitleLike([FromBody]SearchResource search)
+        public async Task<IActionResult> GetSearchByTitleLike([FromBody] SearchResource search)
         {
             var news = await _newsService.GetSearchByTitleLike(search.search);
             return Ok(news);
@@ -61,5 +61,40 @@ namespace ApiService.Controllers.v1
             return Ok(news);
         }
 
+        [HttpGet]
+        [Route("slider")]
+        public async Task<IActionResult> GetSliderByNews()
+        {
+            var news = await _newsService.GetSliderByNews();
+            return Ok(news);
+        }
+
+        //[HttpPost]
+        //[Route("like")]
+        //public IActionResult Like([FromBody] string token, [FromRoute] int newsId)
+        //{
+        //    Response.Cookies.Append(token, Guid.NewGuid().ToString(), new Microsoft.AspNetCore.Http.CookieOptions
+        //    {
+        //        Expires = DateTime.Now.AddYears(2),
+        //        HttpOnly = true
+        //    });
+
+        //    _newsService.LikeDislike(token, newsId);
+        //    return NoContent();
+        //}
+
+        //[HttpPost]
+        //[Route("dislike")]
+        //public IActionResult Dislike([FromBody] string token, [FromRoute] int newsId)
+        //{
+        //    Response.Cookies.Append(token, Guid.NewGuid().ToString(), new Microsoft.AspNetCore.Http.CookieOptions
+        //    {
+        //        Expires = DateTime.Now.AddYears(2),
+        //        HttpOnly = true
+        //    });
+
+        //    _newsService.LikeDislike(token, newsId);
+        //    return NoContent();
+        //}
     }
 }
