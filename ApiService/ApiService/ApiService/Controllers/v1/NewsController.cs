@@ -69,6 +69,22 @@ namespace ApiService.Controllers.v1
             return Ok(news);
         }
 
+        [HttpGet]
+        [Route("sortedtime")]
+        public async Task<IActionResult> GetNewsSortedByTime()
+        {
+            var news = await _newsService.GetNewsSortedByView();
+            return Ok(news);
+        }
+
+        [HttpGet]
+        [Route("sortedlike")]
+        public async Task<IActionResult> GetNewsSortedByLike()
+        {
+            var news = await _newsService.GetNewsSortedByLike();
+            return Ok(news);
+        }
+
         //[HttpPost]
         //[Route("like")]
         //public IActionResult Like([FromBody] string token, [FromRoute] int newsId)

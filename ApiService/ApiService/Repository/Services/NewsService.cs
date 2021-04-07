@@ -53,6 +53,16 @@ namespace Repository.Services
             return view;
         }
 
+        public async Task<IEnumerable<News>> GetNewsSortedByLike()
+        {
+            return await _context.News.OrderByDescending(e => e.Like).Where(e => !e.SoftDeleted).ToListAsync();
+        }
+
+        public async Task<IEnumerable<News>> GetNewsSortedByView()
+        {
+            return await _context.News.OrderByDescending(e => e.View).Where(e => !e.SoftDeleted).ToListAsync();
+        }
+
         public async Task<IEnumerable<News>> GetSearchByTitleLike(string search)
         {
             return await _context.News.Where(e => !e.SoftDeleted && e.Title.Contains(search)).Take(30).ToListAsync();

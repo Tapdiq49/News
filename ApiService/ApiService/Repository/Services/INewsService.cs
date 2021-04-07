@@ -13,6 +13,8 @@ namespace Repository.Services
         Task<IEnumerable<News>> GetSearchByTitleLike(string search);
         Task<IEnumerable<News>> GetLastNews();
         Task<IEnumerable<News>> GetSliderByNews();
+        Task<IEnumerable<News>> GetNewsSortedByView();
+        Task<IEnumerable<News>> GetNewsSortedByLike();
 
         //Task LikeDislike(string token, int newsId);
     }
