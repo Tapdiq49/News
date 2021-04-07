@@ -73,19 +73,36 @@ namespace Repository.Services
             return await _context.News.OrderByDescending(e => e.View).Where(e => !e.SoftDeleted && e.CreatedAt >= DateTime.Now.AddHours(-24)).Take(5).ToListAsync();
         }
 
-        //public Task LikeDislike(string token, int newsId)
-        //{
-        //    var likeDislike =  _context.LikesDislikes.FirstOrDefault(e => !e.SoftDeleted && e.Token == token && e.NewsId == newsId);
-        //    var news =  _context.News.FirstOrDefault(e => !e.SoftDeleted && e.Id == newsId);
-        //    if (news == null) throw new NotFoundException("Xeber tapılmadı");
+        public async Task<News> LikeDislike(string token, int newsId, bool isLiked)
+        {
+            var likeDislike = await _context.LikesDislikes.FirstOrDefaultAsync(e => !e.SoftDeleted && e.Token == token && e.NewsId == newsId);
+            var news = await _context.News.FirstOrDefaultAsync(e => !e.SoftDeleted && e.Id == newsId);
+            if (news == null) throw new NotFoundException("Xeber tapılmadı");
 
-        //    if (news != null)
-        //    {
-        //        news.Like += 1;
-        //        news.Dislike += 1;
-        //        _context.SaveChanges();
+            if (likeDislike == null)
+            {
+                if (isLiked)
+                {
+                    news.Like += 1;
+                }
+                else
+                {
+                    news.Dislike += 1;
+                }
+                LikeDislike newLikeDislike = new LikeDislike
+                {
+                    Token = token,
+                    NewsId = newsId
+                };
+                await _context.LikesDislikes.AddAsync(newLikeDislike);
+                await _context.SaveChangesAsync();
+            }
+            else
+            {
 
-        //    }
-        //}
+                throw new InvalidInputException("Bir xebere iki defe like veya dislike vermez olmaz!");
+            }
+            return news;
+        }
     }
 }

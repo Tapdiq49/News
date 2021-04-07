@@ -16,6 +16,6 @@ namespace Repository.Services
         Task<IEnumerable<News>> GetNewsSortedByView();
         Task<IEnumerable<News>> GetNewsSortedByLike();
 
-        //Task LikeDislike(string token, int newsId);
+        Task<News> LikeDislike(string token, int newsId, bool isLiked);
     }
 }
