@@ -33,8 +33,6 @@
     ".NETCoreApp,Version=v5.0": {
       "ApiService/1.0.0": {
         "dependencies": {
-          "AutoMapper": "10.1.1",
-          "AutoMapper.Extensions.Microsoft.DependencyInjection": "8.1.1",
           "Microsoft.AspNetCore.Mvc.Versioning": "5.0.0",
           "Microsoft.EntityFrameworkCore.Design": "5.0.4",
           "Repository": "1.0.0",
@@ -1414,6 +1412,8 @@
       },
       "Repository/1.0.0": {
         "dependencies": {
+          "AutoMapper": "10.1.1",
+          "AutoMapper.Extensions.Microsoft.DependencyInjection": "8.1.1",
           "Microsoft.EntityFrameworkCore": "5.0.4",
           "Microsoft.EntityFrameworkCore.SqlServer": "5.0.4"
         },

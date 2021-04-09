@@ -3,9 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31105.61
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApiService", "ApiService\ApiService.csproj", "{97639B39-EE74-4AF4-AF9E-7A47ADB5F2CA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ApiService", "ApiService\ApiService.csproj", "{97639B39-EE74-4AF4-AF9E-7A47ADB5F2CA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Repository", "Repository\Repository.csproj", "{8E366ECA-7961-4025-906F-19FB14910231}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Repository", "Repository\Repository.csproj", "{8E366ECA-7961-4025-906F-19FB14910231}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Admin", "Admin\Admin.csproj", "{8A2360D1-A586-4001-B673-E775238B37CF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{8E366ECA-7961-4025-906F-19FB14910231}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8E366ECA-7961-4025-906F-19FB14910231}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8E366ECA-7961-4025-906F-19FB14910231}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8A2360D1-A586-4001-B673-E775238B37CF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8A2360D1-A586-4001-B673-E775238B37CF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8A2360D1-A586-4001-B673-E775238B37CF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8A2360D1-A586-4001-B673-E775238B37CF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -16,5 +16,6 @@ namespace Repository.Data
         public DbSet<News> News { get; set; }
         public DbSet<NewsPhoto> NewsPhotos { get; set; }
         public DbSet<LikeDislike> LikesDislikes { get; set; }
+        public DbSet<Admin> Admins { get; set; }
     }
 }
