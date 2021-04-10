@@ -1,16 +1,19 @@
-﻿using Admin.Models.Account;
+﻿using Control.Filters;
+using Control.Models.Account;
 using Microsoft.AspNetCore.Mvc;
+using Repository.Data.Entities;
 using Repository.Repositories.AdminRepositories;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Admin.Controllers
+namespace Control.Controllers
 {
     public class AccountController : Controller
     {
         private readonly IAdminRepository _adminRepository;
+        private Admin _admin => RouteData.Values["Admin"] as Admin;
 
         public AccountController(IAdminRepository adminRepository)
         {
@@ -49,6 +52,14 @@ namespace Admin.Controllers
             }
 
             return View(model);
+        }
+
+        [TypeFilter(typeof(Auth))]
+        public IActionResult Logout()
+        {
+            _adminRepository.Logout(_admin.Id);
+
+            return RedirectToAction("login", "account");
         }
     }
 }

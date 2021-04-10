@@ -4,10 +4,12 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Admin.Models.Account
+namespace Control.Models.Account
 {
     public class LoginViewModel
     {
+        public int Id { get; set; }
+
         [Required(ErrorMessage = "E-poçt vacibdir")]
         [EmailAddress(ErrorMessage = "Düzgün e-poçt daxil edin")]
         [DataType(DataType.EmailAddress)]

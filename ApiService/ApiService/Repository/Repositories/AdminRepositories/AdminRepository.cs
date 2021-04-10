@@ -14,6 +14,8 @@ namespace Repository.Repositories.AdminRepositories
         bool UserExsist(string email);
         Admin CheckByToken(string token);
         void UpdateToken(int id, string token);
+
+        void Logout(int id);
     }
     public class AdminRepository : IAdminRepository
     {
@@ -38,6 +40,16 @@ namespace Repository.Repositories.AdminRepositories
             }
 
             return null;
+        }
+
+        public void Logout(int id)
+        {
+            var admin = _context.Admins.Find(id);
+
+            admin.Token = null;
+
+            _context.SaveChanges();
+
         }
 
         public void UpdateToken(int id, string token)
