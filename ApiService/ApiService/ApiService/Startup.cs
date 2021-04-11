@@ -77,6 +77,8 @@ namespace ApiService
 
             app.UseRouting();
 
+            app.UseCors(MyAllowSpecificOrigins);
+
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>

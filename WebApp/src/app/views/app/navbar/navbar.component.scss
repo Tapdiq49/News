@@ -1,0 +1,28 @@
+.spacer {
+  flex: 1 2 auto;
+}
+
+.day {
+  align-self: center;
+  margin-left: 25px;
+}
+
+li {
+  display: flex;
+  align-items: center;
+  margin-right: 15px;
+
+  a {
+    color: #000;
+    text-decoration: none;
+    transition: transform .1s linear;
+
+    i {
+      font-size: 20px;
+    }
+  }
+}
+
+.abouts{
+  margin-right: 20px;
+}
