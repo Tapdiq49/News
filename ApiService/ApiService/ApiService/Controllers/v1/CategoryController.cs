@@ -1,8 +1,10 @@
-﻿using ApiService.Resources.NewsCategory;
+﻿using ApiService.Resources.News;
+using ApiService.Resources.NewsCategory;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Repository.Data.Entities;
 using Repository.Exceptions;
+using Repository.Models;
 using Repository.Services;
 using System;
 using System.Collections.Generic;
@@ -48,12 +50,13 @@ namespace ApiService.Controllers.v1
         }
         [HttpGet]
         [Route("{categoryId:int}/news")]
-        public async Task<IActionResult> GetCategoryAllNews([FromRoute] int categoryId)
+        public async Task<IActionResult> GetCategoryAllNews([FromRoute] int categoryId, [FromQuery] int viewCount)
         {
             try
             {
-                var news = await _newsService.GetCategoryAllNews(categoryId);
-                return Ok(news);
+                var news = await _newsService.GetCategoryAllNews(categoryId, viewCount);
+                var newsResource = _mapper.Map<NewsResponse, NewsResponseResource>(news);
+                return Ok(newsResource);
             }
             catch (NotFoundException e)
             {

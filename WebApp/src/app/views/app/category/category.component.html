@@ -1,0 +1,11 @@
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="category">
+                <div class="category-item" *ngFor="let category of categories;let i = index">
+                    <a routerLink="[category.id]">{{ category.name }}</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

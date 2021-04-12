@@ -32,6 +32,14 @@
     {
       "library": "jquery-easing@1.4.1",
       "destination": "wwwroot/lib/jquery-easing/"
+    },
+    {
+      "library": "jquery-validate@1.19.2",
+      "destination": "wwwroot/lib/jquery-validate/"
+    },
+    {
+      "library": "jquery-validation-unobtrusive@3.2.12",
+      "destination": "wwwroot/lib/jquery-validation-unobtrusive/"
     }
   ]
 }

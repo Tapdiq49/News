@@ -1,7 +1,6 @@
 ﻿using Control.Filters;
 using Control.Models.Account;
 using Microsoft.AspNetCore.Mvc;
-using Repository.Data.Entities;
 using Repository.Repositories.AdminRepositories;
 using System;
 using System.Collections.Generic;
@@ -13,7 +12,7 @@ namespace Control.Controllers
     public class AccountController : Controller
     {
         private readonly IAdminRepository _adminRepository;
-        private Admin _admin => RouteData.Values["Admin"] as Admin;
+        private Repository.Data.Entities.Admin _admin => RouteData.Values["Admin"] as Repository.Data.Entities.Admin;
 
         public AccountController(IAdminRepository adminRepository)
         {

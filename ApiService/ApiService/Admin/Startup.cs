@@ -7,6 +7,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Repository.Data;
 using Repository.Repositories.AdminRepositories;
+using Repository.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -35,6 +36,7 @@ namespace Control
                    x => x.MigrationsAssembly("Repository")));
 
             services.AddTransient<IAdminRepository, AdminRepository>();
+            services.AddTransient<IContactService, ContactService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

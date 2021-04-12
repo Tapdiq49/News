@@ -11,6 +11,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
 import { NavbarComponent } from './navbar/navbar.component';
 import { ContactUsComponent } from './contact-us/contact-us.component';
+import { CategoryComponent } from './category/category.component';
 
 
 
@@ -19,6 +20,7 @@ import { ContactUsComponent } from './contact-us/contact-us.component';
     AppComponent,
     NavbarComponent,
     ContactUsComponent,
+    CategoryComponent,
   ],
   imports: [
     CommonModule,

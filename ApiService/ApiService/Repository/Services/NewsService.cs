@@ -25,11 +25,12 @@ namespace Repository.Services
             return res;
         }
 
-        public async Task<IEnumerable<News>> GetCategoryAllNews(int categoryId)
+        public async Task<NewsResponse> GetCategoryAllNews(int categoryId, int viewCount)
         {
-            var news = await _context.News.Where(e => e.CategoryId == categoryId || e.Category.ParentId == categoryId).Include(e => e.Category).ToListAsync();
-            if(news == null) throw new NotFoundException("Bu Kategoriyada xeber tapilmadi");
-            return news;
+            var count = viewCount + 20;
+            var news = await _context.News.OrderByDescending(n => n.CreatedAt).Where(n => !n.SoftDeleted && n.CategoryId==categoryId).Include(n => n.Photos).Include(n => n.Category).Skip(viewCount).Take(count).ToListAsync();
+            var res = new NewsResponse(news, viewCount + news.Count);
+            return res;
         }
 
         public async Task<IEnumerable<News>> GetLastNews()

@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Repository.Data;
 using Repository.Data.Entities;
+using System;
 using System.Threading.Tasks;
 
 namespace Repository.Services
@@ -12,9 +13,26 @@ namespace Repository.Services
         {
             _context = context;
         }
+
+        public void contactToUpdate(Contact contactToUpdate, Contact contact)
+        {
+            contactToUpdate.ModifiedAt = DateTime.Now;
+            contactToUpdate.Phone = contact.Phone;
+            contactToUpdate.Address = contact.Address;
+            contactToUpdate.Email = contact.Email;
+
+            _context.SaveChanges();
+
+        }
+
         public async Task<Contact> GetContact()
         {
             return await _context.Contacts.FirstOrDefaultAsync();
+        }
+
+        public Contact GetContactById(int id)
+        {
+            return _context.Contacts.Find(id);
         }
     }
 }
