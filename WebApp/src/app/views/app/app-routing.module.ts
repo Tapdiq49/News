@@ -7,9 +7,9 @@ const routes: Routes = [
     path: '',
     component: AppComponent,
     children: [
-      { path: '', pathMatch: 'full', redirectTo: 'category/all/news'},
-      { path: 'category/:categoryId/news', loadChildren: () => import('./news/news-routing.module').then(m => m.NewsRoutingModule) },
-      { path: 'about', loadChildren: () => import('./about/about-routing.module').then(m => m.AboutRoutingModule) }
+      { path: '', pathMatch: 'full', redirectTo: 'category/0/news'},
+      { path: 'category/:categoryId/news', loadChildren: () => import('./news/news.module').then(m => m.NewsModule) },
+      { path: 'about', loadChildren: () => import('./about/about.module').then(m => m.AboutModule) }
     ]
   }
 ];

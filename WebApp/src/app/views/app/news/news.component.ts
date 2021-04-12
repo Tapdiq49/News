@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { INewsList } from 'src/app/shared/models/news.model';
+import { ApiService } from 'src/app/shared/services/api.service';
 
 @Component({
   selector: 'app-news',
@@ -6,10 +9,28 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./news.component.scss']
 })
 export class NewsComponent implements OnInit {
-
-  constructor() { }
+  public categoryId: number = 0;
+  public news: INewsList = {
+    "news": [], "count": 0
+  };
+  constructor(private apiService: ApiService, private route: ActivatedRoute, private router: Router) {
+    this.route.params.subscribe(params => {
+      this.categoryId = Number(params.categoryId);
+      this.getNews();
+    })
+  }
 
   ngOnInit(): void {
+    }
+  
+  private getNews(): void {
+    if(this.categoryId == 0){
+      this.apiService.getNews(0).subscribe(
+        news=>{
+          this.news = news;
+        }
+      )
+    }
   }
 
 }

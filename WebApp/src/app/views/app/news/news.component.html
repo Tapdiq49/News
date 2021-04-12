@@ -1,1 +1,11 @@
-<p>news works!</p>
+<section>
+    <div class="container">
+        <div class="row">
+            <div class="news">
+                <div class="news-item" *ngFor="let item of news.news; let i = index">
+                    <a routerLink="[news.id]">{{ item.createdAt }}</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
