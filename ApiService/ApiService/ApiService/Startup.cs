@@ -54,13 +54,13 @@ namespace ApiService
 
             services.AddDbContext<AppDbContext>(options =>
             options.UseSqlServer(Configuration.GetConnectionString("Default"),
-            x => x.MigrationsAssembly("Repository")),ServiceLifetime.Singleton
-            );
+            x => x.MigrationsAssembly("Repository")
+            ));
 
-            services.AddSingleton<INewsService, NewsService>();
-            services.AddSingleton<ICategoryService, CategoryService>();
-            services.AddSingleton<IContactService, ContactService>();
-            services.AddSingleton<IAboutService, AboutService>();
+            services.AddScoped<INewsService, NewsService>();
+            services.AddScoped<ICategoryService, CategoryService>();
+            services.AddScoped<IContactService, ContactService>();
+            services.AddScoped<IAboutService, AboutService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
