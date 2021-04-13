@@ -1,6 +1,6 @@
 ﻿using Admin.Models.Contact;
 using AutoMapper;
-using Control.Filters;
+using Admin.Filters;
 using Microsoft.AspNetCore.Mvc;
 using Repository.Data.Entities;
 using Repository.Services;
@@ -48,6 +48,8 @@ namespace Admin.Controllers
                 Contact contact = _mapper.Map<ContactViewModel, Contact>(model);
 
                 Contact contactToUpdate = _contactService.GetContactById(model.Id);
+
+                contactToUpdate.ModifiedBy = _admin.Fullname;
 
                 if (contactToUpdate == null) return NotFound();
 

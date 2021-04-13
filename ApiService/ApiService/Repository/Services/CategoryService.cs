@@ -17,7 +17,7 @@ namespace Repository.Services
         }
         public async Task<IEnumerable<Category>> GetAllCategories()
         {
-            return await _context.Categories.Where(e => !e.SoftDeleted && e.ParentId==null).Include(e=>e.SubCategories).ToListAsync();
+            return await _context.Categories.Where(e => !e.SoftDeleted).ToListAsync();
         }
 
         public async Task<Category> GetCategory(int id)

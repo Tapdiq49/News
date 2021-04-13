@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "gtl9S7CkqsPrsXUOyQKtC8qWhcMR4evUPRzoTXCL6Z792pzEPJrutlloxxOn9HEpzJQ2LHN7h4Vcz25R1mpYeA==",
+  "dgSpecHash": "2VO+N0ZfqLfYU7MlkTKJFHPm29mib6VOrB9WxsYY0uIojUSMYCklFJdq5X5DSzHUuEaSDcB/KkjuyEBPH8BmKQ==",
   "success": true,
   "projectFilePath": "C:\\Users\\tapoa\\Desktop\\News\\ApiService\\ApiService\\Repository\\Repository.csproj",
   "expectedPackageFiles": [
@@ -38,6 +38,8 @@
     "C:\\Users\\tapoa\\.nuget\\packages\\microsoft.win32.systemevents\\4.7.0\\microsoft.win32.systemevents.4.7.0.nupkg.sha512",
     "C:\\Users\\tapoa\\.nuget\\packages\\newtonsoft.json\\10.0.1\\newtonsoft.json.10.0.1.nupkg.sha512",
     "C:\\Users\\tapoa\\.nuget\\packages\\runtime.native.system\\4.3.0\\runtime.native.system.4.3.0.nupkg.sha512",
+    "C:\\Users\\tapoa\\.nuget\\packages\\sendgrid\\9.22.0\\sendgrid.9.22.0.nupkg.sha512",
+    "C:\\Users\\tapoa\\.nuget\\packages\\starkbank-ecdsa\\1.2.0\\starkbank-ecdsa.1.2.0.nupkg.sha512",
     "C:\\Users\\tapoa\\.nuget\\packages\\system.collections\\4.3.0\\system.collections.4.3.0.nupkg.sha512",
     "C:\\Users\\tapoa\\.nuget\\packages\\system.collections.concurrent\\4.3.0\\system.collections.concurrent.4.3.0.nupkg.sha512",
     "C:\\Users\\tapoa\\.nuget\\packages\\system.collections.immutable\\5.0.0\\system.collections.immutable.5.0.0.nupkg.sha512",

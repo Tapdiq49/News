@@ -9,8 +9,6 @@ namespace Repository.Data.Configurations
         public void Configure(EntityTypeBuilder<Category> builder)
         {
             builder.Property(e => e.Name).HasMaxLength(50).IsRequired();
-            builder.Property(e => e.ParentId).IsRequired(false);
-            builder.HasMany(e => e.SubCategories).WithOne().HasForeignKey(e => e.ParentId).OnDelete(DeleteBehavior.Restrict);
 
             builder.ToTable("Categories");
         }

@@ -1,22 +1,23 @@
-﻿using Control.Filters;
-using Control.Models.Account;
+﻿using Admin.Filters;
+using Admin.Models.Account;
 using Microsoft.AspNetCore.Mvc;
-using Repository.Repositories.AdminRepositories;
+using Repository.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Repository.Exceptions;
 
-namespace Control.Controllers
+namespace Admin.Controllers
 {
     public class AccountController : Controller
     {
-        private readonly IAdminRepository _adminRepository;
+        private readonly IAdminService _adminService;
         private Repository.Data.Entities.Admin _admin => RouteData.Values["Admin"] as Repository.Data.Entities.Admin;
 
-        public AccountController(IAdminRepository adminRepository)
+        public AccountController(IAdminService adminService)
         {
-            _adminRepository = adminRepository;
+            _adminService = adminService;
         }
         public IActionResult Login()
         {
@@ -30,13 +31,13 @@ namespace Control.Controllers
         {
             if (ModelState.IsValid)
             {
-                var admin = _adminRepository.Login(model.Email, model.Password);
+                var admin = _adminService.Login(model.Email, model.Password);
 
                 if (admin != null)
                 {
                     admin.Token = Guid.NewGuid().ToString();
 
-                    _adminRepository.UpdateToken(admin.Id, admin.Token);
+                    _adminService.UpdateToken(admin.Id, admin.Token);
 
                     Response.Cookies.Append("admin-token", admin.Token, new Microsoft.AspNetCore.Http.CookieOptions
                     {
@@ -56,9 +57,44 @@ namespace Control.Controllers
         [TypeFilter(typeof(Auth))]
         public IActionResult Logout()
         {
-            _adminRepository.Logout(_admin.Id);
+            _adminService.Logout(_admin.Id);
 
             return RedirectToAction("login", "account");
+        }
+
+        public  IActionResult ForgetPassword()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> ForgetPassword(ForgetPasswordViewModel model)
+        {
+            if (!ModelState.IsValid) return BadRequest(ModelState);
+
+            try
+            {
+                 await _adminService.ForgetPassword(model.Email);
+            }
+            catch (NotFoundException e)
+            {
+                return StatusCode(404, new { e.Message });
+            }
+
+            return View(model);
+        }
+
+        public IActionResult ChangePassword()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult ChangePassword()
+        {
+            return View();
         }
     }
 }

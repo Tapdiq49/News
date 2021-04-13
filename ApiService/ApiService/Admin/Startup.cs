@@ -6,14 +6,14 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Repository.Data;
-using Repository.Repositories.AdminRepositories;
 using Repository.Services;
+using Repository.Services.Rest;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Control
+namespace Admin
 {
     public class Startup
     {
@@ -35,7 +35,8 @@ namespace Control
                    options.UseSqlServer(Configuration.GetConnectionString("Default"),
                    x => x.MigrationsAssembly("Repository")));
 
-            services.AddTransient<IAdminRepository, AdminRepository>();
+            services.AddTransient<IEmailService, EmailService>();
+            services.AddTransient<IAdminService, AdminService>();
             services.AddTransient<IContactService, ContactService>();
         }
 
