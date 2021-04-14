@@ -15,5 +15,7 @@ namespace Repository.Services
         void UpdateToken(int id, string token);
         void Logout(int id);
         Task ForgetPassword(string email);
+        Task ChangePassword(string forgetToken, string password);
+        Task<bool> CheckForgetToken(string token);
     }
 }

@@ -38,6 +38,7 @@ namespace Admin
             services.AddTransient<IEmailService, EmailService>();
             services.AddTransient<IAdminService, AdminService>();
             services.AddTransient<IContactService, ContactService>();
+            services.AddTransient<ICategoryService, CategoryService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

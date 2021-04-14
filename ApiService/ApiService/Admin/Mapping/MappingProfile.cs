@@ -1,4 +1,5 @@
 ﻿using Admin.Models.Contact;
+using Admin.Models.News;
 using AutoMapper;
 using Repository.Data.Entities;
 using System;
@@ -14,6 +15,8 @@ namespace Admin.Mapping
         {
             CreateMap<Contact, ContactViewModel>();
             CreateMap<ContactViewModel, Contact>();
+            CreateMap<Category, CategoryViewModel>();
+            CreateMap<CategoryViewModel, Category>();
         }
     }
 }

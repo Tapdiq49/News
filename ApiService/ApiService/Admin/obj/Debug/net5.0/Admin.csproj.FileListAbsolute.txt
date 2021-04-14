@@ -154,3 +154,7 @@ C:\Users\tapoa\Desktop\News\ApiService\ApiService\Admin\obj\Debug\net5.0\Razor\V
 C:\Users\tapoa\Desktop\News\ApiService\ApiService\Admin\bin\Debug\net5.0\SendGrid.dll
 C:\Users\tapoa\Desktop\News\ApiService\ApiService\Admin\bin\Debug\net5.0\StarkbankEcdsa.dll
 C:\Users\tapoa\Desktop\News\ApiService\ApiService\Admin\obj\Debug\net5.0\Razor\Views\Account\ForgetPassword.cshtml.g.cs
+C:\Users\tapoa\Desktop\News\ApiService\ApiService\Admin\obj\Debug\net5.0\Razor\Views\Account\ChangePassword.cshtml.g.cs
+C:\Users\tapoa\Desktop\News\ApiService\ApiService\Admin\obj\Debug\net5.0\Razor\Views\Category\Index.cshtml.g.cs
+C:\Users\tapoa\Desktop\News\ApiService\ApiService\Admin\obj\Debug\net5.0\Razor\Views\Category\Create.cshtml.g.cs
+C:\Users\tapoa\Desktop\News\ApiService\ApiService\Admin\obj\Debug\net5.0\Razor\Views\Category\Edit.cshtml.g.cs

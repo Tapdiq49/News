@@ -20,8 +20,9 @@
     <!-- Custom styles for this template-->
     <link href="~/css/sb-admin-2.min.css" rel="stylesheet">
 
-    <!-- Custom styles for this page -->
-    <!--<link href="~/lib/datatables/css/dataTables.bootstrap4.min.css" rel="stylesheet">-->
+    <!--Custom styles for this page-->
+    <link href="~/lib/datatables/css/dataTables.bootstrap4.min.css" rel="stylesheet">
+    <link href="~/lib/jquery-confirm/jquery-confirm.min.css" rel="stylesheet">
 
     @RenderSection("Head", required: false)
 
@@ -48,7 +49,7 @@
 
             <!-- Nav Item - Dashboard -->
             <li class="nav-item active">
-                <a class="nav-link" asp-controller="dashbaord" asp-action="index">
+                <a class="nav-link" asp-controller="dashboard" asp-action="index">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Panel</span>
                 </a>
@@ -59,23 +60,15 @@
 
             <!-- Heading -->
             <div class="sidebar-heading">
-                Interface
+                Xəbərlər
             </div>
 
-            <!-- Nav Item - Pages Collapse Menu -->
+            <!-- Nav Item - Category -->
             <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
-                   aria-expanded="true" aria-controls="collapseTwo">
-                    <i class="fas fa-fw fa-cog"></i>
-                    <span>Components</span>
+                <a class="nav-link" asp-controller="category" asp-action="index">
+                    <i class="far fa-list-alt"></i>
+                    <span>Kategoriyalar</span>
                 </a>
-                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Custom Components:</h6>
-                        <a class="collapse-item" href="buttons.html">Buttons</a>
-                        <a class="collapse-item" href="cards.html">Cards</a>
-                    </div>
-                </div>
             </li>
 
             <!-- Nav Item - Utilities Collapse Menu -->
@@ -83,13 +76,12 @@
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
                    aria-expanded="true" aria-controls="collapseUtilities">
                     <i class="fas fa-fw fa-wrench"></i>
-                    <span>Utilities</span>
+                    <span>Xəbərlər</span>
                 </a>
                 <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities"
                      data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Custom Utilities:</h6>
-                        <a class="collapse-item" href="utilities-color.html">Colors</a>
+                        <a class="collapse-item" asp-controller="news" asp-action="index">Xəbərlər</a>
                         <a class="collapse-item" href="utilities-border.html">Borders</a>
                         <a class="collapse-item" href="utilities-animation.html">Animations</a>
                         <a class="collapse-item" href="utilities-other.html">Other</a>
@@ -126,7 +118,7 @@
                 </div>
             </li>
 
-            <!-- Nav Item - Charts -->
+            <!-- Nav Item - Contact -->
             <li class="nav-item">
                 <a class="nav-link" asp-controller="contact" asp-action="index">
                     <i class="fas fa-address-book"></i>
@@ -298,14 +290,10 @@
     <!-- Custom scripts for all pages-->
     <script src="~/js/sb-admin-2.min.js"></script>
 
-    <!-- Page level plugins -->
-    <!--<script src="~/lib/datatables/js/jquery.dataTables.min.js"></script>
-    <script src="~/lib//datatables/js/dataTables.bootstrap4.min.js"></script>-->
-
-    <!-- Page level custom scripts -->
-    <!--<script src="~/js/demo/datatables-demo.js"></script>-->
+    <script src="~/lib/jquery-confirm/jquery-confirm.min.js"></script>
 
     @RenderSection("Scripts", required: false)
+    <script src="~/js/JavaScript.js" asp-append-version="true"></script>
 
 </body>
 

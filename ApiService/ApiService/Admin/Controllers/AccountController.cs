@@ -92,9 +92,37 @@ namespace Admin.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult ChangePassword()
+        public async Task<IActionResult> ChangePassword(ChangePasswordViewModel model)
+        {
+            if (!ModelState.IsValid) return BadRequest(ModelState);
+
+            try
+            {
+                await _adminService.ChangePassword(model.ForgetToken, model.Password);
+            }
+            catch (NotFoundException e)
+            {
+                return StatusCode(404, new { e.Message });
+            }
+
+            return View(model);
+        }
+
+        public IActionResult CheckForgetToken()
         {
             return View();
+        }
+        public async Task<IActionResult> CheckForgetToken(string token)
+        {
+            try
+            {
+                await _adminService.CheckForgetToken(token);
+            }
+            catch (NotFoundException e)
+            {
+                return StatusCode(404, new { e.Message });
+            }
+            return Ok();
         }
     }
 }

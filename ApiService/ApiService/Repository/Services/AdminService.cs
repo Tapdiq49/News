@@ -21,9 +21,32 @@ namespace Repository.Services
             _context = context;
             _emailService = emailService;
         }
+
+        public async Task ChangePassword(string forgetToken, string password)
+        {
+            var admin = await _context.Admins.FirstOrDefaultAsync(u => u.ForgetToken == forgetToken);
+
+            if (admin == null) throw new NotFoundException("Token tapılmadı");
+
+            admin.Password = CryptoHelper.Crypto.HashPassword(password);
+            admin.ForgetToken = null;
+            admin.ModifiedAt = DateTime.Now;
+
+            await _context.SaveChangesAsync();
+        }
+
         public Admin CheckByToken(string token)
         {
             return _context.Admins.FirstOrDefault(e => e.Token == token);
+        }
+
+        public async Task<bool> CheckForgetToken(string token)
+        {
+            bool check = await _context.Admins.AnyAsync(u => u.ForgetToken == token);
+
+            if (!check) throw new NotFoundException("Token tapılmadı");
+
+            return true;
         }
 
         public async Task ForgetPassword(string email)
@@ -36,13 +59,13 @@ namespace Repository.Services
 
             await _context.SaveChangesAsync();
 
-            await _emailService.SendAsync(admin.Email, admin.Fullname, "d-9b6fa27fd14e468d8c8bec6d8c25db2f", new
+            await _emailService.SendAsync(admin.Email, admin.Fullname, "d-98cedcb3e7f34923972074d6e27ce1ca", new
             {
                 subject = "Forget Password",
                 fullname = admin.Fullname,
                 text = $"We’ve received a request to reset the password for the Stripe account associated with {admin.Email}. No changes have been made to your account yet.",
                 btnText = "Reset your password",
-                btnUrl = $"https://localhost:44397/account/ForgetPassword={admin.ForgetToken}"
+                btnUrl = $"https://localhost:44397/account/ChangePassword?token={admin.ForgetToken}"
             });
         }
 
