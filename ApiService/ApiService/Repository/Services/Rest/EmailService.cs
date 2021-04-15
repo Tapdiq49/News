@@ -24,6 +24,7 @@ namespace Repository.Services.Rest
         }
         public async Task SendAsync(string toEmail, string toName, string templateId, object data)
         {
+        //    var sendGridKey = Environment.GetEnvironmentVariable("SendGridKey");
             var client = new SendGridClient(_configuration["SendGrid:Key"]);
             var sendGridMessage = new SendGridMessage();
             sendGridMessage.SetFrom(_configuration["SendGrid:From"], _configuration["SendGrid:Title"]);

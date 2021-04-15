@@ -59,7 +59,7 @@ namespace Repository.Services
 
             await _context.SaveChangesAsync();
 
-            await _emailService.SendAsync(admin.Email, admin.Fullname, "d-98cedcb3e7f34923972074d6e27ce1ca", new
+            await _emailService.SendAsync(admin.Email, admin.Fullname, "d-812ea3273642450098d8652e42fc5ede", new
             {
                 subject = "Forget Password",
                 fullname = admin.Fullname,
