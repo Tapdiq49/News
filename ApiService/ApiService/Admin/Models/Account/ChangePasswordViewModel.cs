@@ -11,9 +11,9 @@ namespace Admin.Models.Account
         [Required]
         public string ForgetToken { get; set; }
 
-        [Required]
-        [MaxLength(50)]
-        [MinLength(6)]
+        [Required(ErrorMessage = "Xana bosh ola bilməz")]
+        [MaxLength(50, ErrorMessage = "Parolunuz maximum 50 simvol olmalıdır")]
+        [MinLength(6, ErrorMessage = "Parolunuz minimum 6 simvol olmalıdır")]
         public string Password { get; set; }
     }
 }

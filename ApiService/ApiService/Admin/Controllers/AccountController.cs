@@ -85,9 +85,15 @@ namespace Admin.Controllers
             return View(model);
         }
 
-        public IActionResult ChangePassword()
+        public IActionResult ChangePassword(string token)
         {
-            return View();
+            ChangePasswordViewModel model = new ChangePasswordViewModel
+            {
+                ForgetToken = token,
+                Password = ""
+
+            };
+            return View(model);
         }
 
         [HttpPost]
@@ -108,10 +114,6 @@ namespace Admin.Controllers
             return View(model);
         }
 
-        public IActionResult CheckForgetToken()
-        {
-            return View();
-        }
         public async Task<IActionResult> CheckForgetToken(string token)
         {
             try
