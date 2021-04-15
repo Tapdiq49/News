@@ -71,15 +71,13 @@ namespace Admin.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> ForgetPassword(ForgetPasswordViewModel model)
         {
-            if (!ModelState.IsValid) return BadRequest(ModelState);
-
             try
             {
                  await _adminService.ForgetPassword(model.Email);
             }
             catch (NotFoundException e)
             {
-                return StatusCode(404, new { e.Message });
+                ModelState.AddModelError("Email", "Belə bir e-poçt addresi mövcud deyil");
             }
 
             return View(model);
@@ -100,18 +98,25 @@ namespace Admin.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> ChangePassword(ChangePasswordViewModel model)
         {
-            if (!ModelState.IsValid) return BadRequest(ModelState);
+            if (ModelState.IsValid) {
 
-            try
-            {
-                await _adminService.ChangePassword(model.ForgetToken, model.Password);
+                try
+                {
+                    await _adminService.ChangePassword(model.ForgetToken, model.Password);
+                }
+                catch (NotFoundException e)
+                {
+                    ModelState.AddModelError("Password", "fsdfds");
+                }
+               
             }
-            catch (NotFoundException e)
+            if (ModelState.IsValid)
             {
-                return StatusCode(404, new { e.Message });
+                return RedirectToAction("index", "dashboard");
             }
-
             return View(model);
+
+            
         }
 
         public async Task<IActionResult> CheckForgetToken(string token)
