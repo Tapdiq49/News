@@ -17,6 +17,18 @@ namespace Repository.Services
         {
             _context = context;
         }
+
+        public News CreateNews(News news)
+        {
+            news.CreatedAt = DateTime.Now;
+
+             _context.News.Add(news);
+
+             _context.SaveChanges();
+
+            return news;
+        }
+
         public async Task<NewsResponse> GetAllNews(int viewCount)
         {
             var count = viewCount + 20;
@@ -52,6 +64,11 @@ namespace Repository.Services
             }
 
             return view;
+        }
+
+        public async Task<IEnumerable<News>> GetNews()
+        {
+            return await _context.News.Include(n => n.Photos).Include(n => n.Category).OrderByDescending(e=>e.CreatedAt).ToListAsync();
         }
 
         public async Task<IEnumerable<News>> GetNewsSortedByLike()

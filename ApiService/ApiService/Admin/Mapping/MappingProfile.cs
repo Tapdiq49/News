@@ -17,6 +17,10 @@ namespace Admin.Mapping
             CreateMap<ContactViewModel, Contact>();
             CreateMap<Category, CategoryViewModel>();
             CreateMap<CategoryViewModel, Category>();
+            CreateMap<News, NewsViewModel>();
+            CreateMap<NewsViewModel, News>();
+            CreateMap<NewsPhoto, NewsPhotoViewModel>();
+            CreateMap<NewsPhotoViewModel, NewsPhoto>();
         }
     }
 }

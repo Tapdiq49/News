@@ -1,0 +1,156 @@
+﻿@model NewsViewModel
+@{
+    ViewData["Title"] = "Create";
+}
+
+
+<!-- Begin Page Content -->
+<div class="container-fluid">
+
+    <!-- Page Heading -->
+    <h1 class="h3 mb-2 text-gray-800">Yeni xəbər</h1>
+
+    <!-- DataTales Example -->
+    <div class="card shadow mb-4">
+        <div class="card-body">
+            <form method="post" enctype="multipart/form-data">
+                <div class="form-group">
+                    <label>Vəziyyəti</label>
+                    <div class="custom-control custom-radio custom-control-inline ml-3">
+                        <input type="radio" asp-for="SoftDeleted" value="true" class="custom-control-input">
+                        <label class="custom-control-label" asp-for="SoftDeleted" for="statusActive">Passiv</label>
+                    </div>
+                    <div class="custom-control custom-radio custom-control-inline">
+                        <input type="radio" asp-for="SoftDeleted" value="false" class="custom-control-input" checked="">
+                        <label class="custom-control-label" asp-for="SoftDeleted">Aktiv</label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Komment Bildirmək</label>
+                    <div class="custom-control custom-radio custom-control-inline ml-3">
+                        <input type="radio" asp-for="Comment" value="true" class="custom-control-input" checked="">
+                        <label class="custom-control-label" asp-for="Comment">Olsun</label>
+                    </div>
+                    <div class="custom-control custom-radio custom-control-inline">
+                        <input type="radio" asp-for="Comment" value="false" class="custom-control-input">
+                        <label class="custom-control-label" asp-for="Comment">Olmasin</label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="Title">Başlığ</label>
+                    <input class="form-control form-control-user slug-source" asp-for="Title">
+                    <span class="field-validation-valid text-danger" asp-validation-for="Title"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="CategoryId">Kategoriya</label>
+                    <select class="form-control form-control-user" asp-for="CategoryId">
+                        <option value="0" selected disabled>Seçin</option>
+                        @foreach (var item in ViewBag.Categories)
+                        {
+                            <option value="@item.Id">@item.Name</option>
+                        }
+                    </select>
+                    <span class="field-validation-valid" asp-validation-for="CategoryId"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="Text">Mətn</label>
+                    <textarea class="form-control form-control-user slug-source" asp-for="Text"></textarea>
+                    <span class="field-validation-valid text-danger" asp-validation-for="Text"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="VideoLink">Video Linki</label>
+                    <input class="form-control form-control-user slug-source" asp-for="VideoLink">
+                    <span class="field-validation-valid text-danger" asp-validation-for="VideoLink"></span>
+                </div>
+
+                <div class=" gallery custom-file">
+                    <label for="files" type="button" id="uploader" class="custom-file-label">Şəkillər yüklə(png,jpg,gif)</label>
+                    <input type="file" name="files" id="files" multiple="" class="d-none" accept="image/*">
+                    <br />
+                    <div class="photos"></div>
+                </div>
+
+                <div class="form-group d-flex justify-content-end mt-3">
+                    <button type="submit" class="btn btn-primary btn-icon-split">
+                        <span class="icon text-white-50">
+                            <i class="fas fa-plus"></i>
+                        </span>
+                        <span class="text">Əlavə et</span>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+</div>
+
+@section Scripts{
+    <script src="~/lib/jquery-validate/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            if ($("input[name='files']").length) {
+                $("input[name='files']").change(function () {
+                    for (var i = 0; i < this.files.length; i++) {
+                        var formData = new FormData();
+                        formData.append('file', this.files[i]);
+                        $.ajax({
+                            url: '/news/upload',
+                            type: 'POST',
+                            data: formData,
+                            processData: false,
+                            contentType: false,
+                            dataType: "json",
+                            success: function (response) {
+                                let index = $(".photos .item").length;
+                                $(".photos").append(`<div class="item">
+                                                <input type="hidden" value="${(index + 1)}" name="Photos[${index}].OrderBy" />
+                                                <input type="hidden" value="${response.filename}" name="Photos[${index}].Image" />
+                                                <img src="${response.src}" />
+                                                <a href="#" data-name="${response.filename}" class="remove"><i class="fa fa-trash"></i></a>
+                                            </div>`);
+                            }
+                        });
+                    }
+                });
+                $(document).on("click", ".photos .remove", function (ev) {
+                    ev.preventDefault();
+                    let elem = $(this).parents(".item");
+                    $.ajax({
+                        url: '/news/remove',
+                        data: {
+                            name: $(this).data("name")
+                        },
+                        type: "post",
+                        dataType: "json",
+                        success: function (response) {
+                            elem.remove();
+                        }
+                    });
+                });
+            }
+            $("#DepartmentId").change(function () {
+                $("#CategoryId").html(` <option value="0" selected disabled>Seçin</option>`);
+                $.getJSON("/products/categories/" + $(this).val(), function (res) {
+                    res.forEach(item => {
+                        $("#CategoryId").append(`<option value="${item.id}">${item.name}</option>`)
+                    });
+                });
+            });
+
+            CKEDITOR.replace('Text');
+        });
+    </script>
+}
+
+@section Head{ 
+    <link rel="stylesheet" href="~/css/photo-uploads.css"/>
+    <script src="//cdn.ckeditor.com/4.16.0/standard/ckeditor.js"></script>
+}
+
+
+

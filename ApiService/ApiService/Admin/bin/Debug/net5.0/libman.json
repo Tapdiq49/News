@@ -44,6 +44,10 @@
     {
       "library": "jquery-confirm@3.3.4",
       "destination": "wwwroot/lib/jquery-confirm/"
+    },
+    {
+      "library": "dropzone@5.9.2",
+      "destination": "wwwroot/lib/dropzone/"
     }
   ]
 }

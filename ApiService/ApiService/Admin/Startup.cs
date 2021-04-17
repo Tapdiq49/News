@@ -1,3 +1,4 @@
+using Admin.Libs;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -39,6 +40,9 @@ namespace Admin
             services.AddTransient<IAdminService, AdminService>();
             services.AddTransient<IContactService, ContactService>();
             services.AddTransient<ICategoryService, CategoryService>();
+            services.AddTransient<INewsService, NewsService>();
+            services.AddTransient<ICloudinaryService, CloudinaryService>();
+            services.AddTransient<IFileManager, FileManager>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
