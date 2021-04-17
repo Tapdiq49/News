@@ -53,7 +53,7 @@ namespace Admin.Controllers
 
                 if (contactToUpdate == null) return NotFound();
 
-                _contactService.contactToUpdate(contactToUpdate, contact);
+                _contactService.ContactToUpdate(contactToUpdate, contact);
 
                 return RedirectToAction("index");
             }

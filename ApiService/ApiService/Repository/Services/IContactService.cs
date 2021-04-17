@@ -7,6 +7,6 @@ namespace Repository.Services
     {
         Task<Contact> GetContact();
         Contact GetContactById(int id);
-        void contactToUpdate(Contact contactToUpdate, Contact contact);
+        void ContactToUpdate(Contact contactToUpdate, Contact contact);
     }
 }

@@ -40,6 +40,7 @@ namespace Admin
             services.AddTransient<IAdminService, AdminService>();
             services.AddTransient<IContactService, ContactService>();
             services.AddTransient<ICategoryService, CategoryService>();
+            services.AddTransient<IAboutService, AboutService>();
             services.AddTransient<INewsService, NewsService>();
             services.AddTransient<ICloudinaryService, CloudinaryService>();
             services.AddTransient<IFileManager, FileManager>();

@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace Admin.Controllers
 {
+    [TypeFilter(typeof(Auth))]
     public class DashboardController : Controller
     {
-        [TypeFilter(typeof(Auth))]
         public IActionResult Index()
         {
             return View();

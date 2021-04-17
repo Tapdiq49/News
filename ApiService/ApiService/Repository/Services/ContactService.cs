@@ -14,7 +14,7 @@ namespace Repository.Services
             _context = context;
         }
 
-        public void contactToUpdate(Contact contactToUpdate, Contact contact)
+        public void ContactToUpdate(Contact contactToUpdate, Contact contact)
         {
             contactToUpdate.ModifiedAt = DateTime.Now;
             contactToUpdate.Phone = contact.Phone;
