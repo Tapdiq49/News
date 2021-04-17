@@ -17,23 +17,23 @@
                 <div class="form-group">
                     <label>Vəziyyəti</label>
                     <div class="custom-control custom-radio custom-control-inline ml-3">
-                        <input type="radio" asp-for="SoftDeleted" value="true" class="custom-control-input">
-                        <label class="custom-control-label" asp-for="SoftDeleted" for="statusActive">Passiv</label>
+                        <input id="statusActive" type="radio" asp-for="SoftDeleted" value="true" class="custom-control-input">
+                        <label class="custom-control-label" for="statusActive">Passiv</label>
                     </div>
                     <div class="custom-control custom-radio custom-control-inline">
-                        <input type="radio" asp-for="SoftDeleted" value="false" class="custom-control-input" checked="">
-                        <label class="custom-control-label" asp-for="SoftDeleted">Aktiv</label>
+                        <input id="StatusPassive" type="radio" asp-for="SoftDeleted" value="false" class="custom-control-input" checked="">
+                        <label class="custom-control-label" for="StatusPassive">Aktiv</label>
                     </div>
                 </div>
                 <div class="form-group">
                     <label>Komment Bildirmək</label>
                     <div class="custom-control custom-radio custom-control-inline ml-3">
-                        <input type="radio" asp-for="Comment" value="true" class="custom-control-input" checked="">
-                        <label class="custom-control-label" asp-for="Comment">Olsun</label>
+                        <input id="CommentActive" type="radio" asp-for="Comment" value="true" class="custom-control-input" checked="">
+                        <label class="custom-control-label" for="CommentActive">Olsun</label>
                     </div>
                     <div class="custom-control custom-radio custom-control-inline">
-                        <input type="radio" asp-for="Comment" value="false" class="custom-control-input">
-                        <label class="custom-control-label" asp-for="Comment">Olmasin</label>
+                        <input id="CommentPassive" type="radio" asp-for="Comment" value="false" class="custom-control-input">
+                        <label class="custom-control-label" for="CommentPassive">Olmasin</label>
                     </div>
                 </div>
 
@@ -67,10 +67,9 @@
                     <span class="field-validation-valid text-danger" asp-validation-for="VideoLink"></span>
                 </div>
 
-                <div class=" gallery custom-file">
-                    <label for="files" type="button" id="uploader" class="custom-file-label">Şəkillər yüklə(png,jpg,gif)</label>
+                <div class="form-group gallery">
+                    <label for="files" type="button" id="uploader" class="btn btn-secondary">Şəkillər əlavə edin</label>
                     <input type="file" name="files" id="files" multiple="" class="d-none" accept="image/*">
-                    <br />
                     <div class="photos"></div>
                 </div>
 
@@ -148,9 +147,6 @@
 }
 
 @section Head{ 
-    <link rel="stylesheet" href="~/css/photo-uploads.css"/>
+    <link rel="stylesheet" href="~/css/photo-upload.css"/>
     <script src="//cdn.ckeditor.com/4.16.0/standard/ckeditor.js"></script>
 }
-
-
-

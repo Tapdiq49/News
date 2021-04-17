@@ -16,12 +16,12 @@
                 <div class="form-group">
                     <label>Vəziyyəti</label>
                     <div class="custom-control custom-radio custom-control-inline ml-3">
-                        <input type="radio" asp-for="SoftDeleted" value="true" class="custom-control-input">
-                        <label class="custom-control-label" asp-for="SoftDeleted" for="statusActive">Passiv</label>
+                        <input id="StatusActive" type="radio" asp-for="SoftDeleted" value="false" class="custom-control-input" checked="">
+                        <label class="custom-control-label" asp-for="SoftDeleted" for="StatusActive">Aktiv</label>
                     </div>
                     <div class="custom-control custom-radio custom-control-inline">
-                        <input type="radio" asp-for="SoftDeleted" value="false" class="custom-control-input" checked="">
-                        <label class="custom-control-label" asp-for="SoftDeleted">Aktiv</label>
+                        <input id="StatusPassive" type="radio" asp-for="SoftDeleted" value="true" class="custom-control-input" >
+                        <label class="custom-control-label" for="StatusPassive">Passiv</label>
                     </div>
                 </div>
 
