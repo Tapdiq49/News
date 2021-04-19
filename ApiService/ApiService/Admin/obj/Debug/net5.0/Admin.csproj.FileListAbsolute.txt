@@ -164,3 +164,4 @@ C:\Users\tapoa\Desktop\News\ApiService\ApiService\Admin\bin\Debug\net5.0\Cloudin
 C:\Users\tapoa\Desktop\News\ApiService\ApiService\Admin\bin\Debug\net5.0\Microsoft.Extensions.WebEncoders.dll
 C:\Users\tapoa\Desktop\News\ApiService\ApiService\Admin\obj\Debug\net5.0\Razor\Views\About\Index.cshtml.g.cs
 C:\Users\tapoa\Desktop\News\ApiService\ApiService\Admin\obj\Debug\net5.0\Razor\Views\About\Edit.cshtml.g.cs
+C:\Users\tapoa\Desktop\News\ApiService\ApiService\Admin\obj\Debug\net5.0\Razor\Views\News\Edit.cshtml.g.cs

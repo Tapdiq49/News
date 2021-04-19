@@ -11,20 +11,24 @@ namespace Admin.Models.News
     {
         public int Id { get; set; }
 
-        [Required]
-        [MaxLength(150)]
+        [Required(ErrorMessage = "Başlığ vacibdir")]
+        [MaxLength(50, ErrorMessage = "Başlığ maximum 50 xarakter ola bilər")]
         public string Title { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Mətn vacibdir")]
+        [MinLength(1, ErrorMessage = "Başlığ maximum 50 xarakter ola bilər")]
         public string Text { get; set; }
 
         [Required]
         public bool Comment { get; set; }
         public bool SoftDeleted { get; set; }
+
+        [Required(ErrorMessage = "Kategoriya vacibdir")]
         public int CategoryId { get; set; }
         public string VideoLink { get; set; }
 
-        public ICollection<NewsPhotoViewModel> Photos { get; set; }
+        [Required(ErrorMessage = "Şəkil vacibdir")]
+        public IList<NewsPhotoViewModel> Photos { get; set; }
         public Category Category { get; set; }
     }
 }

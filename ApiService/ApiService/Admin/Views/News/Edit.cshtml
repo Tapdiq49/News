@@ -1,6 +1,7 @@
 ﻿@model NewsViewModel
+@inject ICloudinaryService _cloudinaryService
 @{
-    ViewData["Title"] = "Yeni xəbər yarat";
+    ViewData["Title"] = "Xəbəri yenilə";
 }
 
 
@@ -8,7 +9,7 @@
 <div class="container-fluid">
 
     <!-- Page Heading -->
-    <h1 class="h3 mb-2 text-gray-800">Yeni xəbər</h1>
+    <h1 class="h3 mb-2 text-gray-800">Xəbəri yenilə</h1>
 
     <!-- DataTales Example -->
     <div class="card shadow mb-4">
@@ -52,7 +53,7 @@
                             <option value="@item.Id">@item.Name</option>
                         }
                     </select>
-                    <span class="field-validation-valid text-danger" asp-validation-for="CategoryId"></span>
+                    <span class="field-validation-valid" asp-validation-for="CategoryId"></span>
                 </div>
 
                 <div class="form-group">
@@ -68,18 +69,27 @@
                 </div>
 
                 <div class="form-group gallery">
-                    <label  for="files" type="button" id="uploader" class="btn btn-secondary">Şəkillər əlavə edin</label>
+                    <label for="files" type="button" id="uploader" class="btn btn-secondary">Şəkillər əlavə edin</label>
                     <input type="file" name="files" id="files" multiple="" class="d-none" accept="image/*">
-                    <span class="field-validation-valid text-danger" asp-validation-for="Photos"></span>
-                    <div class="photos"></div>
+                    <div class="photos">
+                        @for (int i = 0; i < Model.Photos.Count; i++)
+                        {
+                            <div class="item">
+                                <input type="hidden" value="@i" name="Photos[@i].OrderBy" />
+                                <input type="hidden" asp-for="Photos[i].Image" />
+                                <img src="@_cloudinaryService.BuildUrl(Model.Photos[i].Image)" />
+                                <a href="#" data-name="@Model.Photos[i].Image" data-id="@Model.Photos[i].Id" class="remove"><i class="fa fa-trash"></i></a>
+                            </div>
+                        }
+                    </div>
                 </div>
 
                 <div class="form-group d-flex justify-content-end mt-3">
                     <button type="submit" class="btn btn-primary btn-icon-split">
                         <span class="icon text-white-50">
-                            <i class="fas fa-plus"></i>
+                            <i class="fas fa-pencil-alt"></i>
                         </span>
-                        <span class="text">Əlavə et</span>
+                        <span class="text">Yenilə</span>
                     </button>
                 </div>
             </form>
@@ -98,6 +108,8 @@
                     for (var i = 0; i < this.files.length; i++) {
                         var formData = new FormData();
                         formData.append('file', this.files[i]);
+                        formData.append('newsId',@Model.Id);
+                        formData.append('orderBy', $(".photos .item").length + 1);
                         $.ajax({
                             url: '/news/upload',
                             type: 'POST',
@@ -108,15 +120,11 @@
                             success: function (response) {
                                 let index = $(".photos .item").length;
                                 $(".photos").append(`<div class="item">
-                                                <input type="hidden" value="${(index + 1)}" name="Photos[${index}].OrderBy" />
-                                                <input type="hidden" value="${response.filename}" name="Photos[${index}].Image" />
-                                                <img src="${response.src}" />
-                                                 <div class="form-check form-check-inline">
-                                                  <input class="form-check-input" asp-for="Photos.FirstOrDefault(e=>e.Main)" type="checkbox" id="inlineCheckbox1" value="true">
-                                                  <label class="form-check-label" for="inlineCheckbox1">Əsas şəkil</label>
-                                                </div>
-                                                <a href="#" data-name="${response.filename}" class="remove"><i class="fa fa-trash"></i></a>
-                                            </div>`);
+                                                    <input type="hidden" value="${ (index + 1)}" name="Photos[${index}].OrderBy" />
+                                                    <input type="hidden" value="${  response.filename}" name="Photos[${index}].Image" />
+                                                    <img src="${ response.src}" />
+                                                    <a href="#" data-name="${  response.filename}" class="remove"><i class="fa fa-trash"></i></a>
+                                                </div>`);
                             }
                         });
                     }
@@ -127,7 +135,8 @@
                     $.ajax({
                         url: '/news/remove',
                         data: {
-                            name: $(this).data("name")
+                            name: $(this).data("name"),
+                            id: $(this).data("id")
                         },
                         type: "post",
                         dataType: "json",
@@ -143,7 +152,7 @@
     </script>
 }
 
-@section Head{ 
-    <link rel="stylesheet" href="~/css/photo-upload.css"/>
+@section Head{
+    <link rel="stylesheet" href="~/css/photo-upload.css" />
     <script src="//cdn.ckeditor.com/4.16.0/standard/ckeditor.js"></script>
 }

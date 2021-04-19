@@ -54,8 +54,15 @@ using Admin.Models.About;
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 7 "C:\Users\tapoa\Desktop\News\ApiService\ApiService\Admin\Views\_ViewImports.cshtml"
+using Repository.Services.Rest;
+
+#line default
+#line hidden
+#nullable disable
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"7091c65830b0329e613be026ede8a57552863778", @"/Views/_ViewStart.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"024458431e939728cf0a2fae6a9264df50b191b5", @"/Views/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"a66c15bb1a67453934266f926a430eed3d1b68be", @"/Views/_ViewImports.cshtml")]
     public class Views__ViewStart : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<dynamic>
     {
         #pragma warning disable 1998

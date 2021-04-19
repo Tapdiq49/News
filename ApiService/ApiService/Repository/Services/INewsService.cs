@@ -18,5 +18,10 @@ namespace Repository.Services
         Task<News> LikeDislike(string token, int newsId, bool isLiked);
         Task<IEnumerable<News>> GetNews();
         News CreateNews(News news);
+        News GetNewsById(int id);
+        void RemovePhotoById(int id);
+        void AddPhoto(NewsPhoto newsPhoto);
+        void UpdateNews(News newsToUpdate, News news);
+        void DeleteNews(News news);
     }
 }

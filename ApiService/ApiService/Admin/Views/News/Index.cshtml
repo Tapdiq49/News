@@ -1,5 +1,5 @@
 ﻿@model IEnumerable<NewsViewModel>
-
+@inject ICloudinaryService _cloudinaryService
 @{
     ViewData["Title"] = "Xəbərlər";
 }
@@ -53,12 +53,9 @@
                                 <td>@item.Title</td>
                                 <td>@item.Category.Name</td>
                                 <td>
-                                    @*<img width="100" src="@_cloudinaryService.BuildUrl(item.Photos[0].Image)" />*@
+                                    <img width="60" src="@_cloudinaryService.BuildUrl(item.Photos[0].Image)" />
                                 </td>
                                 <td class="d-flex justify-content-center">
-                                    <a class="btn btn-info btn-circle btn-sm" asp-action="options" asp-route-id="@item.Id">
-                                        <i class="fas fa-filter"></i>
-                                    </a>
 
                                     <a class="btn btn-info btn-circle btn-sm ml-2" asp-action="edit" asp-route-id="@item.Id">
                                         <i class="fas fa-pencil-alt"></i>

@@ -65,3 +65,7 @@ C:\Users\tapoa\Desktop\News\ApiService\ApiService\ApiService\bin\Debug\net5.0\Au
 C:\Users\tapoa\Desktop\News\ApiService\ApiService\ApiService\bin\Debug\net5.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
 C:\Users\tapoa\Desktop\News\ApiService\ApiService\ApiService\bin\Debug\net5.0\Microsoft.AspNetCore.Mvc.Versioning.dll
 C:\Users\tapoa\Desktop\News\ApiService\ApiService\ApiService\bin\Debug\net5.0\CryptoHelper.dll
+C:\Users\tapoa\Desktop\News\ApiService\ApiService\ApiService\bin\Debug\net5.0\CloudinaryDotNet.dll
+C:\Users\tapoa\Desktop\News\ApiService\ApiService\ApiService\bin\Debug\net5.0\Microsoft.Extensions.WebEncoders.dll
+C:\Users\tapoa\Desktop\News\ApiService\ApiService\ApiService\bin\Debug\net5.0\SendGrid.dll
+C:\Users\tapoa\Desktop\News\ApiService\ApiService\ApiService\bin\Debug\net5.0\StarkbankEcdsa.dll

@@ -81,6 +81,11 @@ namespace Repository.Services
             return await _context.News.OrderByDescending(e => e.View).Where(e => !e.SoftDeleted).ToListAsync();
         }
 
+        public News GetNewsById(int id)
+        {
+            return  _context.News.Include("Photos").Include("Category").FirstOrDefault(e=> e.Id == id);
+        }
+
         public async Task<IEnumerable<News>> GetSearchByTitleLike(string search)
         {
             return await _context.News.Where(e => !e.SoftDeleted && e.Title.Contains(search)).Take(30).ToListAsync();
@@ -121,6 +126,52 @@ namespace Repository.Services
                 throw new InvalidInputException("Bir xebere iki defe like veya dislike vermez olmaz!");
             }
             return news;
+        }
+
+        public void RemovePhotoById(int id)
+        {
+
+            NewsPhoto newsPhoto = _context.NewsPhotos.Find(id);
+
+            var n = _context.NewsPhotos.Where(e => e.NewsId == newsPhoto.NewsId && e.OrderBy > newsPhoto.OrderBy).OrderBy(e => e.OrderBy).ToList();
+
+            _context.NewsPhotos.Remove(newsPhoto);
+            _context.SaveChanges();
+
+            foreach (var item in n)
+            {
+                item.OrderBy -= 1;
+                _context.SaveChanges();
+            }
+
+           
+        }
+
+        public void AddPhoto(NewsPhoto newsPhoto)
+        {
+            _context.NewsPhotos.Add(newsPhoto);
+            _context.SaveChanges();
+        }
+
+        public void UpdateNews(News newsToUpdate, News news)
+        {
+            newsToUpdate.SoftDeleted = news.SoftDeleted;
+            newsToUpdate.Title = news.Title;
+            newsToUpdate.Text = news.Text;
+            newsToUpdate.CategoryId = news.CategoryId;
+            newsToUpdate.ModifiedBy = news.ModifiedBy;
+            newsToUpdate.Comment = news.Comment;
+            newsToUpdate.CreatedAt = DateTime.Now;
+
+            _context.SaveChanges();
+        }
+
+        public void DeleteNews(News news)
+        {
+           
+            _context.News.Remove(news);
+
+            _context.SaveChanges();
         }
     }
 }
