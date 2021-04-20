@@ -112,7 +112,7 @@ namespace Repository.Services
         {
             var checkEmail = await _context.Admins.AnyAsync(u => u.Email == admin.Email);
 
-            if (checkEmail) throw new NotFoundException("Bu email artıq mövcuddur");
+            if (checkEmail) throw new InvalidInputException("Bu email artıq mövcuddur");
 
             admin.Password = CryptoHelper.Crypto.HashPassword(admin.Password);
            

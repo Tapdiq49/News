@@ -3,6 +3,7 @@ using Admin.Models.About;
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using Repository.Data.Entities;
+using Repository.Enums;
 using Repository.Services;
 using System;
 using System.Collections.Generic;
@@ -31,6 +32,10 @@ namespace Admin.Controllers
         }
         public IActionResult Edit(int id)
         {
+            if (_admin.Type != ManagerType.SuperAdmin)
+            {
+                return NotFound();
+            }
             About about =  _aboutService.GetAboutById(id);
 
             if (about == null) return NotFound();

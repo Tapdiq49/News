@@ -2,6 +2,7 @@
 using Admin.Models.Manager;
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
+using Repository.Exceptions;
 using Repository.Services;
 using System;
 using System.Collections.Generic;
@@ -39,11 +40,18 @@ namespace Admin.Controllers
         {
             if (ModelState.IsValid)
             {
-                var userInput =  _mapper.Map<AdminViewModel, Repository.Data.Entities.Admin>(model);
-                var user = await _adminService.Register(userInput);
-
-                var usermodel = _mapper.Map<Repository.Data.Entities.Admin, AdminViewModel>(user);
-
+                try
+                {
+                    var userInput = _mapper.Map<AdminViewModel, Repository.Data.Entities.Admin>(model);
+                    await _adminService.Register(userInput);
+                }catch(InvalidInputException e)
+                {
+                    ModelState.AddModelError("Email", e.Message);
+                }
+                
+            }
+            if (ModelState.IsValid)
+            {
                 return RedirectToAction("index");
             }
             return View(model);
