@@ -111,12 +111,13 @@
                                                 <input type="hidden" value="${(index + 1)}" name="Photos[${index}].OrderBy" />
                                                 <input type="hidden" value="${response.filename}" name="Photos[${index}].Image" />
                                                 <img src="${response.src}" />
-                                                 <div class="form-check form-check-inline">
-                                                  <input class="form-check-input" asp-for="Photos.FirstOrDefault(e=>e.Main)" type="checkbox" id="inlineCheckbox1" value="true">
+                                                 <div class="chechbox">
+                                                  <input class="form-check-input news-photo" value="false" name="Photos[${index}].Main" type="checkbox" id="inlineCheckbox1" onclick="selectPhotoAsMain(this)">
                                                   <label class="form-check-label" for="inlineCheckbox1">Əsas şəkil</label>
                                                 </div>
                                                 <a href="#" data-name="${response.filename}" class="remove"><i class="fa fa-trash"></i></a>
                                             </div>`);
+                                checkMainPhoto();
                             }
                         });
                     }
@@ -140,6 +141,24 @@
 
             CKEDITOR.replace('Text');
         });
+
+        function selectPhotoAsMain(obj) {          
+            let allPhotos = document.getElementsByClassName("news-photo");
+            for (let index = 0; index < allPhotos.length; index++) {                
+                allPhotos[index].value = "false";
+                allPhotos[index].checked = false;
+            }
+            obj.value = "true";
+            obj.checked = true;
+        }
+
+        function checkMainPhoto() {
+            let allPhotos = document.getElementsByClassName("news-photo");
+            if (allPhotos.length == 1) {
+                allPhotos[0].value = "true";
+                allPhotos[0].checked = true;
+            }
+        }
     </script>
 }
 

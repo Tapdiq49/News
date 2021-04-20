@@ -37,3 +37,16 @@
         border-radius: 50%;
         font-size: 12px;
 }
+
+.chechbox {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    color: white;
+    width: 113px;
+    height: 25px;
+    line-height: 25px;
+    text-align: center;
+    border-radius: 50%;
+    font-size: 15px;
+}

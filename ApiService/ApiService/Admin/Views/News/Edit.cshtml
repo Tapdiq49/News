@@ -74,12 +74,17 @@
                     <div class="photos">
                         @for (int i = 0; i < Model.Photos.Count; i++)
                         {
-                            <div class="item">
-                                <input type="hidden" value="@i" name="Photos[@i].OrderBy" />
-                                <input type="hidden" asp-for="Photos[i].Image" />
-                                <img src="@_cloudinaryService.BuildUrl(Model.Photos[i].Image)" />
-                                <a href="#" data-name="@Model.Photos[i].Image" data-id="@Model.Photos[i].Id" class="remove"><i class="fa fa-trash"></i></a>
+                        <div class="item">
+                            <input type="hidden" value="@i" name="Photos[@i].OrderBy" />
+                            <input type="hidden" value="@Model.Photos[i].Id" name="Photos[@i].Id" />
+                            <input type="hidden" asp-for="Photos[i].Image" />
+                            <img src="@_cloudinaryService.BuildUrl(Model.Photos[i].Image)" />
+                            <div class="chechbox">
+                                <input class="form-check-input news-photo" value="false" asp-for="Photos[i].Main" type="checkbox" id="inlineCheckbox1" onclick="selectPhotoAsMain(this)">
+                                <label class="form-check-label" for="inlineCheckbox1">Əsas şəkil</label>
                             </div>
+                            <a href="#" data-name="@Model.Photos[i].Image" data-id="@Model.Photos[i].Id" class="remove"><i class="fa fa-trash"></i></a>
+                        </div>
                         }
                     </div>
                 </div>
@@ -120,11 +125,16 @@
                             success: function (response) {
                                 let index = $(".photos .item").length;
                                 $(".photos").append(`<div class="item">
-                                                    <input type="hidden" value="${ (index + 1)}" name="Photos[${index}].OrderBy" />
-                                                    <input type="hidden" value="${  response.filename}" name="Photos[${index}].Image" />
-                                                    <img src="${ response.src}" />
-                                                    <a href="#" data-name="${  response.filename}" class="remove"><i class="fa fa-trash"></i></a>
-                                                </div>`);
+                                                        <input type="hidden" value="${ (index + 1)}" name="Photos[${index}].OrderBy" />
+                                                        <input type="hidden" value="${ (response.id)}" name="Photos[${index}].Id" />
+                                                        <input type="hidden" value="${  response.filename}" name="Photos[${index}].Image" />
+                                                        <img src="${ response.src}" />
+                                                        <div class="chechbox">
+                                                            <input class="form-check-input news-photo" value="false" name="Photos[${index}].Main" type="checkbox" id="inlineCheckbox1" onclick="selectPhotoAsMain(this)">
+                                                            <label class="form-check-label" for="inlineCheckbox1">Əsas şəkil</label>
+                                                        </div>
+                                                        <a href="#" data-name="${  response.filename}" class="remove"><i class="fa fa-trash"></i></a>
+                                                    </div>`);
                             }
                         });
                     }
@@ -149,6 +159,15 @@
 
             CKEDITOR.replace('Text');
         });
+        function selectPhotoAsMain(obj) {
+            let allPhotos = document.getElementsByClassName("news-photo");
+            for (let index = 0; index < allPhotos.length; index++) {
+                allPhotos[index].value = "false";
+                allPhotos[index].checked = false;
+            }
+            obj.value = "true";
+            obj.checked = true;
+        }
     </script>
 }
 

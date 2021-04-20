@@ -86,21 +86,37 @@ namespace Admin.Controllers
             if (ModelState.IsValid)
             {
                 var news = _mapper.Map<NewsViewModel, News>(model);
-
+                var newsPhotos = new List<NewsPhoto>();
+                foreach (var item in model.Photos)
+                {
+                    newsPhotos.Add(_mapper.Map<NewsPhotoViewModel, NewsPhoto>(item));
+                }
                 var newsToUpdate = _newsService.GetNewsById(model.Id);
+           
 
                 if (newsToUpdate == null) return NotFound();
 
                 news.ModifiedBy = _admin.Fullname;
 
                 _newsService.UpdateNews(newsToUpdate, news);
+                foreach (var item in newsPhotos)
+                {
+                    var newsPhotoUpdate = _newsService.GetNewsPhotoById(item.Id);
+                    if (newsPhotoUpdate == null) return NotFound();
+                    item.ModifiedBy = _admin.Fullname;
+                    _newsService.UpdateNewsPhoto(newsPhotoUpdate, item);
+                }
+                
 
                 return RedirectToAction("index");
+
             }
             ViewBag.Categories =  await _categoryService.GetAllCategories();
 
             return View(model);
+
         }
+
         public IActionResult Delete(int id)
         {
             News news = _newsService.GetNewsById(id);

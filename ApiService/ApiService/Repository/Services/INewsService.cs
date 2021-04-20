@@ -23,5 +23,7 @@ namespace Repository.Services
         void AddPhoto(NewsPhoto newsPhoto);
         void UpdateNews(News newsToUpdate, News news);
         void DeleteNews(News news);
+        NewsPhoto GetNewsPhotoById(int id);
+        void UpdateNewsPhoto(NewsPhoto newsPhotoToUpdate, NewsPhoto newsPhoto);
     }
 }

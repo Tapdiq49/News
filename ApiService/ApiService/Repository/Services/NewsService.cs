@@ -155,13 +155,14 @@ namespace Repository.Services
 
         public void UpdateNews(News newsToUpdate, News news)
         {
+           
             newsToUpdate.SoftDeleted = news.SoftDeleted;
             newsToUpdate.Title = news.Title;
             newsToUpdate.Text = news.Text;
             newsToUpdate.CategoryId = news.CategoryId;
             newsToUpdate.ModifiedBy = news.ModifiedBy;
             newsToUpdate.Comment = news.Comment;
-            newsToUpdate.CreatedAt = DateTime.Now;
+            newsToUpdate.ModifiedAt = DateTime.Now;
 
             _context.SaveChanges();
         }
@@ -170,6 +171,20 @@ namespace Repository.Services
         {
            
             _context.News.Remove(news);
+
+            _context.SaveChanges();
+        }
+
+        public NewsPhoto GetNewsPhotoById(int id)
+        {
+            return _context.NewsPhotos.FirstOrDefault(e => e.Id == id);
+        }
+
+        public void UpdateNewsPhoto(NewsPhoto newsPhotoToUpdate, NewsPhoto newsPhoto)
+        {
+            newsPhotoToUpdate.Main = newsPhoto.Main;
+            newsPhotoToUpdate.ModifiedAt = DateTime.Now;
+            newsPhotoToUpdate.ModifiedBy = newsPhoto.ModifiedBy;
 
             _context.SaveChanges();
         }
