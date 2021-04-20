@@ -17,5 +17,9 @@ namespace Repository.Services
         Task ForgetPassword(string email);
         Task ChangePassword(string forgetToken, string password);
         Task<bool> CheckForgetToken(string token);
+        Task<IEnumerable<Admin>> GetManagers();
+        Task<Admin> GetAdminById(int id);
+        void DeleteAdmin(Admin admin);
+        Task<Admin> Register(Admin admin);
     }
 }

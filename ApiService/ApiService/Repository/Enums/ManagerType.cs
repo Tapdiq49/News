@@ -8,7 +8,7 @@ namespace Repository.Enums
 {
     public enum ManagerType
     {
-        Admin,
+        SuperAdmin,
         Redaktor
     }
 }

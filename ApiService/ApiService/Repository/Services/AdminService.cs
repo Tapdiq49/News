@@ -49,6 +49,13 @@ namespace Repository.Services
             return true;
         }
 
+        public void DeleteAdmin(Admin admin)
+        {
+            _context.Admins.Remove(admin);
+
+            _context.SaveChanges();
+        }
+
         public async Task ForgetPassword(string email)
         {
             var admin = await _context.Admins.FirstOrDefaultAsync(e => e.Email == email);
@@ -59,7 +66,7 @@ namespace Repository.Services
 
             await _context.SaveChangesAsync();
 
-            await _emailService.SendAsync(admin.Email, admin.Fullname, "d-e7ec5a458b974f1084e93e9641438c54", new
+            await _emailService.SendAsync(admin.Email, admin.Fullname, "d-7599dcab3140467daffcdcdac2a14f34", new
             {
                 subject = "Forget Password",
                 fullname = admin.Fullname,
@@ -67,6 +74,16 @@ namespace Repository.Services
                 btnText = "Reset your password",
                 btnUrl = $"https://localhost:44397/account/ChangePassword?token={admin.ForgetToken}"
             });
+        }
+
+        public async Task<Admin> GetAdminById(int id)
+        {
+            return await _context.Admins.FindAsync(id);
+        }
+
+        public async Task<IEnumerable<Admin>> GetManagers()
+        {
+            return await _context.Admins.ToListAsync();
         }
 
         public Admin Login(string email, string password)
@@ -89,6 +106,22 @@ namespace Repository.Services
 
             _context.SaveChanges();
 
+        }
+
+        public async Task<Admin> Register(Admin admin)
+        {
+            var checkEmail = await _context.Admins.AnyAsync(u => u.Email == admin.Email);
+
+            if (checkEmail) throw new NotFoundException("Bu email artıq mövcuddur");
+
+            admin.Password = CryptoHelper.Crypto.HashPassword(admin.Password);
+           
+            admin.CreatedAt = DateTime.Now;
+
+            await _context.Admins.AddAsync(admin);
+            await _context.SaveChangesAsync();
+
+            return admin;
         }
 
         public void UpdateToken(int id, string token)

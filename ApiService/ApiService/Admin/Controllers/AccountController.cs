@@ -106,7 +106,7 @@ namespace Admin.Controllers
                 }
                 catch (NotFoundException e)
                 {
-                    ModelState.AddModelError("Password", "fsdfds");
+                    ModelState.AddModelError("Password", "Şifrəni düzgün daxil edin");
                 }
                
             }

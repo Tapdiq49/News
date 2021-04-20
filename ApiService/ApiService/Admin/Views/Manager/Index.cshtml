@@ -1,0 +1,67 @@
+﻿@model IEnumerable<AdminViewModel>
+@{
+    ViewData["Title"] = "İdarəçilər";
+}
+
+<!-- Begin Page Content -->
+<div class="container-fluid">
+
+    <!-- Page Heading -->
+    <h1 class="h3 mb-2 text-gray-800">İdarəçilər</h1>
+
+    <!-- DataTales Example -->
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <a asp-action="create" class="m-0 font-weight-bold btn btn-success">Yarat +</a>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                        <tr class="text-center">
+                            <th>Adı və soyadı</th>
+                            <th>E-poçtu</th>
+                            <th>Rolu</th>
+                            <th>Sil</th>
+                        </tr>
+                    </thead>
+                    <tfoot>
+                        <tr class="text-center">
+                            <th>Adı və soyadı</th>
+                            <th>E-poçtu</th>
+                            <th>Rolu</th>
+                            <th>Sil</th>
+                        </tr>
+                    </tfoot>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                        <tr>
+
+                            <td>@item.Fullname</td>
+                            <td>@item.Email</td>
+                            <td>@item.Type</td>
+                            <td class="d-flex justify-content-center">
+
+                                <a class="btn btn-danger btn-circle btn-sm ml-2 deleteitem" asp-action="delete" asp-route-id="@item.Id">
+                                    <i class="fas fa-trash"></i>
+                                </a>
+                            </td>
+                        </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+</div>
+@section Scripts{
+    <!-- /.container-fluid -->
+    <!-- Page level plugins -->
+    <script src="~/lib/datatables/js/jquery.dataTables.min.js"></script>
+    <script src="~/lib/datatables/js/dataTables.bootstrap4.min.js"></script>
+
+    <!-- Page level custom scripts -->
+    <script src="~/js/demo/datatables-demo.js"></script>
+}

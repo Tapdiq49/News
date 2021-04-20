@@ -1,5 +1,6 @@
 ﻿using Admin.Models.About;
 using Admin.Models.Contact;
+using Admin.Models.Manager;
 using Admin.Models.News;
 using AutoMapper;
 using Repository.Data.Entities;
@@ -28,6 +29,9 @@ namespace Admin.Mapping
 
             CreateMap<NewsPhoto, NewsPhotoViewModel>();
             CreateMap<NewsPhotoViewModel, NewsPhoto>();
+
+            CreateMap<Repository.Data.Entities.Admin, AdminViewModel>();
+            CreateMap<AdminViewModel, Repository.Data.Entities.Admin>();
         }
     }
 }

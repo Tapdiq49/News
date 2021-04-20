@@ -3,6 +3,7 @@ using Admin.Models.News;
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using Repository.Data.Entities;
+using Repository.Exceptions;
 using Repository.Services;
 using System;
 using System.Collections.Generic;
@@ -41,11 +42,19 @@ namespace Admin.Controllers
         {
             if (ModelState.IsValid)
             {
-                Category category = _mapper.Map<CategoryViewModel, Category>(model);
-                category.ModifiedBy = _admin.Fullname;
+                try
+                {
+                    Category category = _mapper.Map<CategoryViewModel, Category>(model);
+                    category.ModifiedBy = _admin.Fullname;
 
-                await _categoryService.CreateCategory(category);
-
+                    await _categoryService.CreateCategory(category);
+                }catch(NotFoundException e)
+                {
+                    ModelState.AddModelError("Email", "Bu e-poçt ünvanı artıq movcuddur");
+                }
+            }
+            if (ModelState.IsValid)
+            {
                 return RedirectToAction("index");
             }
 
