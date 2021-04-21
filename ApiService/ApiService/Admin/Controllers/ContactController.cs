@@ -8,6 +8,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Repository.Enums;
 
 namespace Admin.Controllers
 {
@@ -31,6 +32,10 @@ namespace Admin.Controllers
         }
         public IActionResult Edit(int id)
         {
+            if (_admin.Type != ManagerType.SuperAdmin)
+            {
+                return NotFound();
+            }
             Contact contact = _contactService.GetContactById(id);
 
             if (contact == null) return NotFound();

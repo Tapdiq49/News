@@ -73,20 +73,10 @@
 
             <!-- Nav Item - Utilities Collapse Menu -->
             <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
-                   aria-expanded="true" aria-controls="collapseUtilities">
+                <a class="nav-link" asp-controller="news" asp-action="index">
                     <i class="fas fa-fw fa-wrench"></i>
                     <span>Xəbərlər</span>
                 </a>
-                <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities"
-                     data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" asp-controller="news" asp-action="index">Xəbərlər</a>
-                        <a class="collapse-item" href="utilities-border.html">Borders</a>
-                        <a class="collapse-item" href="utilities-animation.html">Animations</a>
-                        <a class="collapse-item" href="utilities-other.html">Other</a>
-                    </div>
-                </div>
             </li>
 
             <!-- Divider -->
@@ -109,12 +99,12 @@
                         <a class="collapse-item" asp-controller="about" asp-action="index">Haqqımızda</a>
                         <h6 class="collapse-header">Giriş ekranı</h6>
                         <a class="collapse-item" asp-controller="account" asp-action="login" target="_blank">Login</a>
-                        <a class="collapse-item"  asp-controller="account" asp-action="ChangePassword"  target="_blank">Change Password</a>
-                        <a class="collapse-item" asp-controller="account" asp-action="ForgetPassword"  target="_blank">Forgot Password</a>
+                        <a class="collapse-item" asp-controller="account" asp-action="ChangePassword" target="_blank">Change Password</a>
+                        <a class="collapse-item" asp-controller="account" asp-action="ForgetPassword" target="_blank">Forgot Password</a>
+                        <a class="collapse-item" asp-controller="account" asp-action="DoneChangePassüord" target="_blank">Done Change Password</a>
                         <div class="collapse-divider"></div>
                         <h6 class="collapse-header">Other Pages:</h6>
                         <a class="collapse-item" href="404.html">404 Page</a>
-                        <a class="collapse-item" href="blank.html">Blank Page</a>
                     </div>
                 </div>
             </li>

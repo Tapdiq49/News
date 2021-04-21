@@ -2,6 +2,7 @@
 using Admin.Models.Manager;
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
+using Repository.Enums;
 using Repository.Exceptions;
 using Repository.Services;
 using System;
@@ -31,6 +32,10 @@ namespace Admin.Controllers
         }
         public async Task<IActionResult> Create()
         {
+            if (_admin.Type != ManagerType.SuperAdmin)
+            {
+                return NotFound();
+            }
             ViewBag.Admins = await _adminService.GetManagers();
             return View();
         }
@@ -58,6 +63,10 @@ namespace Admin.Controllers
         }
         public async Task<IActionResult> Delete(int id)
         {
+            if (_admin.Type != ManagerType.SuperAdmin)
+            {
+                return NotFound();
+            }
             Repository.Data.Entities.Admin admin = await _adminService.GetAdminById(id);
 
             if (admin == null) return NotFound();

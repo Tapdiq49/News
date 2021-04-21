@@ -167,3 +167,4 @@ C:\Users\tapoa\Desktop\News\ApiService\ApiService\Admin\obj\Debug\net5.0\Razor\V
 C:\Users\tapoa\Desktop\News\ApiService\ApiService\Admin\obj\Debug\net5.0\Razor\Views\News\Edit.cshtml.g.cs
 C:\Users\tapoa\Desktop\News\ApiService\ApiService\Admin\obj\Debug\net5.0\Razor\Views\Manager\Index.cshtml.g.cs
 C:\Users\tapoa\Desktop\News\ApiService\ApiService\Admin\obj\Debug\net5.0\Razor\Views\Manager\Create.cshtml.g.cs
+C:\Users\tapoa\Desktop\News\ApiService\ApiService\Admin\obj\Debug\net5.0\Razor\Views\Account\DoneChangePassword.cshtml.g.cs
