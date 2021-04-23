@@ -1,7 +1,9 @@
 <header>
   <div class="container">
-    <app-navbar></app-navbar>
-    <app-category></app-category>
+    <div class="row">
+      <app-navbar></app-navbar>
+      <app-category></app-category>
+    </div>
   </div>
 </header>
 <main>
@@ -16,6 +18,18 @@
         </div>
         <app-contact-us></app-contact-us>
       </div>
+      <div class="col-lg-6">
+        <div class="social-links">
+          <ul class="ng-star-inserted">
+            <span class="follow-me">Bizi izləyin : </span>
+            <li class="ng-star-inserted"><a href=""><i class="fa-facebook fa-facebook-f fab"></i></a></li>
+            <li class="ng-star-inserted"><a href=""><i class="fa-instagram fa-instagram-f fab"></i></a></li>
+            <li class="ng-star-inserted"><a href=""><i class="fa-twitter fa-twitter-f fab"></i></a></li>
+            <li class="ng-star-inserted"><a href=""><i class="fa-youtube fa-youtube-f fab"></i></a></li>
+          </ul>
+        </div>
+      </div>
+      <a routerLink="/" class="scrollTop"><i class="fas fa-chevron-up"></i></a>
     </div>
   </div>
 </footer>

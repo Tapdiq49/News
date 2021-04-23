@@ -10,7 +10,7 @@ namespace Repository.Data.Configurations
         {
             builder.Property(e => e.Title).HasMaxLength(150).IsRequired();
             builder.Property(e => e.Text).HasColumnType("ntext").IsRequired();
-            builder.Property(e => e.VideoLink).HasMaxLength(150);
+            builder.Property(e => e.VideoLink).HasColumnType("ntext");
             builder.Property(e => e.Comment).IsRequired();
             builder.Property(e => e.Like).IsRequired().HasDefaultValue(0);
             builder.Property(e => e.Dislike).IsRequired().HasDefaultValue(0);

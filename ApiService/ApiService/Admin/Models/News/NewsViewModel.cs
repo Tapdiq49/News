@@ -12,7 +12,7 @@ namespace Admin.Models.News
         public int Id { get; set; }
 
         [Required(ErrorMessage = "Başlığ vacibdir")]
-        [MaxLength(50, ErrorMessage = "Başlığ maximum 50 xarakter ola bilər")]
+        [MaxLength(150, ErrorMessage = "Başlığ maximum 50 xarakter ola bilər")]
         public string Title { get; set; }
 
         [Required(ErrorMessage = "Mətn vacibdir")]

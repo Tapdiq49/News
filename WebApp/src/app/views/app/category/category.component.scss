@@ -1,6 +1,22 @@
-.category{
-    display: flex;
-    .category-item{
-        margin-right: 15px;
+.category {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 10px;
+  margin-bottom: 23px;
+
+  .category-item {
+    margin-right: 15px;
+    padding: 5px;
+    transition: all .4s linear;
+
+    &:hover {
+      background: #e90c71;
+      border-radius: 8px;
+      cursor: pointer;
+      a{
+        color: #fff;
+      }
+     
     }
+  }
 }

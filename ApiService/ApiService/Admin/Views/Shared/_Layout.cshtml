@@ -37,11 +37,10 @@
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
             <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
-                <div class="sidebar-brand-icon">
-                    <img src="~/img/dd748aaf9ea4fa6170f5fe700630791a.png" class="w-50">
+            <a class="sidebar-brand d-flex align-items-center justify-content-center overflow-hidden" href="index.html">
+                <div class="sidebar-brand-icon overflow-hidden">
+                    <img src="~/img/Logo.jpeg" class="w-100">
                 </div>
-                <div class="sidebar-brand-text mr-5">News</div>
             </a>
 
             <!-- Divider -->
@@ -97,6 +96,7 @@
                 <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <a class="collapse-item" asp-controller="about" asp-action="index">Haqqımızda</a>
+                        <a class="collapse-item" asp-controller="contact" asp-action="index">Əlaqə</a>
                         <h6 class="collapse-header">Giriş ekranı</h6>
                         <a class="collapse-item" asp-controller="account" asp-action="login" target="_blank">Login</a>
                         <a class="collapse-item" asp-controller="account" asp-action="ChangePassword" target="_blank">Change Password</a>
@@ -114,6 +114,14 @@
                 <a class="nav-link" asp-controller="contact" asp-action="index">
                     <i class="fas fa-address-book"></i>
                     <span>Əlaqə</span>
+                </a>
+            </li>
+
+            <!-- Nav Item - Contact -->
+            <li class="nav-item">
+                <a class="nav-link" asp-controller="about" asp-action="index">
+                    <i class="fas fa-address-card"></i>
+                    <span>Haqqımızda</span>
                 </a>
             </li>
 

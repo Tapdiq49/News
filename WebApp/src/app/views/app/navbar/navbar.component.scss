@@ -1,7 +1,12 @@
-.spacer {
-  flex: 1 2 auto;
-}
 
+.logo{
+  a{
+    &:hover{
+      color: #000;
+    }
+  }
+  
+}
 .day {
   align-self: center;
   margin-left: 25px;
@@ -11,12 +16,13 @@ li {
   display: flex;
   align-items: center;
   margin-right: 15px;
-
   a {
     color: #000;
     text-decoration: none;
-    transition: transform .1s linear;
-
+    transition: transform .5s linear;
+    &:hover{
+      transform: scale(1.1);
+    }
     i {
       font-size: 20px;
     }
@@ -24,5 +30,6 @@ li {
 }
 
 .abouts{
+  font-family: 'Exo 2', sans-serif;
   margin-right: 20px;
 }

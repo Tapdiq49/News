@@ -1,6 +1,9 @@
 export interface ICategory {
     name: string;
-    parentId?: any;
-    subCategories: ICategory[];
+    id: number;
+    softDeleted: boolean;
+    createdAt: Date;
+    modifiedAt: Date;
+    modifiedBy: string;
 }
 

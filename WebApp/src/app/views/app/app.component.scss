@@ -1,0 +1,57 @@
+footer {
+  position: relative;
+  color: #fff;
+  .copyright{
+    p{
+      margin-bottom: 30px;
+    }
+  }
+  .social-links{
+    .ng-star-inserted{
+      span {
+        margin-right: 15px;
+      }
+      li {
+        display: flex;
+        align-items: center;
+        margin-right: 15px;
+    
+        a {
+          color: #fff;
+          text-decoration: none;
+          transition: transform .5s linear;
+          font-size: 20px;
+          &:hover{
+            transform: rotate(360deg);
+          }
+        }
+      }
+    }
+  }
+  .scrollTop {
+    position: absolute;
+    top: 100px;
+    right: 20px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    z-index: 4;
+    background-color: #e90c71;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all .5s linear;
+    i{
+      transition: all .5s linear;
+    }
+    &:hover{
+      transform: scale(1.1);
+      i{
+        transform: rotate(360deg);
+      }
+    }
+  }
+}

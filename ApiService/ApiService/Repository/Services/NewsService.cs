@@ -163,6 +163,7 @@ namespace Repository.Services
             newsToUpdate.ModifiedBy = news.ModifiedBy;
             newsToUpdate.Comment = news.Comment;
             newsToUpdate.ModifiedAt = DateTime.Now;
+            newsToUpdate.VideoLink = news.VideoLink;
 
             _context.SaveChanges();
         }

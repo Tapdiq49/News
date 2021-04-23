@@ -15,9 +15,11 @@ export interface INews{
     like: number;
     dislike: number;
     photos: IPhoto[];
+    mainPhoto: IPhoto;
     view: number;
     videoLink?: any;
     category: ICategory;
+
 }
 export interface IPhoto{
     orderBy: number;

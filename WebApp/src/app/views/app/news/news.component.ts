@@ -28,6 +28,13 @@ export class NewsComponent implements OnInit {
       this.apiService.getNews(0).subscribe(
         news=>{
           this.news = news;
+          this.news.news.forEach(element => {
+            element.photos.forEach(photo => {
+              if(photo.main){
+                element.mainPhoto = photo;
+              }
+            });
+          });
         }
       )
     }
