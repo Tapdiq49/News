@@ -18,19 +18,33 @@ export class NewsComponent implements OnInit {
       this.categoryId = Number(params.categoryId);
       this.getNews();
     })
+
   }
 
   ngOnInit(): void {
-    }
-  
+  }
+
   private getNews(): void {
-    if(this.categoryId == 0){
+    if (this.categoryId == 0) {
       this.apiService.getNews(0).subscribe(
-        news=>{
+        news => {
           this.news = news;
           this.news.news.forEach(element => {
             element.photos.forEach(photo => {
-              if(photo.main){
+              if (photo.main) {
+                element.mainPhoto = photo;
+              }
+            });
+          });
+        }
+      )
+    }else{
+      this.apiService.getCategoryNews(this.categoryId,0).subscribe(
+        news => {
+          this.news = news;
+          this.news.news.forEach(element => {
+            element.photos.forEach(photo => {
+              if (photo.main) {
                 element.mainPhoto = photo;
               }
             });

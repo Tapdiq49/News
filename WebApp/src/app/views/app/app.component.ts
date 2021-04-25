@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 
 @Component({
   selector: 'app-app',
@@ -10,5 +10,7 @@ export class AppComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
+  scrollToTop(){
+    document.getElementById("scrolltop").scrollIntoView();
+  }
 }

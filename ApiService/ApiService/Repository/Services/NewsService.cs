@@ -52,7 +52,7 @@ namespace Repository.Services
 
         public async Task<News> GetNews(int id)
         {
-            var view = await _context.News.FirstOrDefaultAsync(p => !p.SoftDeleted && p.Id==id);
+            var view = await _context.News.Include(n => n.Photos).Include(n => n.Category).FirstOrDefaultAsync(p => !p.SoftDeleted && p.Id==id);
             if (view != null)
             {
                 view.View += 1;
@@ -83,7 +83,7 @@ namespace Repository.Services
 
         public News GetNewsById(int id)
         {
-            return  _context.News.Include("Photos").Include("Category").FirstOrDefault(e=> e.Id == id);
+            return  _context.News.Include(n => n.Photos).Include(n => n.Category).FirstOrDefault(e=> e.Id == id);
         }
 
         public async Task<IEnumerable<News>> GetSearchByTitleLike(string search)

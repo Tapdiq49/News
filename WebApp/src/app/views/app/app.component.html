@@ -1,4 +1,4 @@
-<header>
+<header id="scrolltop">
   <div class="container">
     <div class="row">
       <app-navbar></app-navbar>
@@ -7,6 +7,11 @@
   </div>
 </header>
 <main>
+  <div class="container">
+    <div class="col-lg-7" >
+      <app-slider></app-slider>
+    </div>
+  </div>
   <router-outlet></router-outlet>
 </main>
 <footer>
@@ -29,7 +34,7 @@
           </ul>
         </div>
       </div>
-      <a routerLink="/" class="scrollTop"><i class="fas fa-chevron-up"></i></a>
+      <button (click)="scrollToTop()" class="scrollTop"><i class="fas fa-chevron-up"></i></button>
     </div>
   </div>
 </footer>

@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { CarouselModule } from 'ngx-owl-carousel-o';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -13,6 +14,8 @@ import { MatListModule } from '@angular/material/list';
 import { NavbarComponent } from './navbar/navbar.component';
 import { ContactUsComponent } from './contact-us/contact-us.component';
 import { CategoryComponent } from './category/category.component';
+import { SliderComponent } from './slider/slider.component';
+import {ScrollingModule} from '@angular/cdk/scrolling';
 
 
 
@@ -22,6 +25,7 @@ import { CategoryComponent } from './category/category.component';
     NavbarComponent,
     ContactUsComponent,
     CategoryComponent,
+    SliderComponent,
   ],
   imports: [
     CommonModule,
@@ -32,7 +36,9 @@ import { CategoryComponent } from './category/category.component';
     MatSidenavModule,
     MatIconModule,
     MatListModule,
-    MatCardModule
+    MatCardModule,
+    CarouselModule,
+    ScrollingModule
   ]
 })
 export class AppModule { }

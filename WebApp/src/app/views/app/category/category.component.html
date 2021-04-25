@@ -2,7 +2,7 @@
   <nav class="category">
     <ul>
       <li class="category-item" *ngFor="let category of categories;let i = index">
-        <a routerLink="[category.id]">{{ category.name }}</a>
+        <a routerLink="/app/category/{{category.id}}/news">{{ category.name }}</a>
       </li>
     </ul>
   </nav>
