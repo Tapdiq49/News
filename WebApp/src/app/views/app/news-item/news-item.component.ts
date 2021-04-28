@@ -1,9 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { OnInit } from '@angular/core';
 import { INewsItem } from 'src/app/shared/models/newsItem.model';
 import { ApiService } from 'src/app/shared/services/api.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
+import { Component } from '@angular/core';
 
+declare var FB: any;
 
 @Component({
   selector: 'app-news-item',
@@ -42,10 +44,10 @@ export class NewsItemComponent implements OnInit {
     })
   }
 
-  ngOnInit(): void {    
-    
-    
+  ngOnInit(): void {   
+    if (typeof (FB) != 'undefined'&& FB != null) { FB.XFBML.parse(); }
   }
+
 
   private getNewsById(): void {
     this.apiService.getNewsById(this.newsItemId);
