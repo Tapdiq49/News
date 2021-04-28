@@ -7,7 +7,7 @@ import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 })
 export class AppComponent implements OnInit {
   constructor() { }
-
+  
   ngOnInit(): void {
   }
   scrollToTop(){

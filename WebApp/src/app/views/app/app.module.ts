@@ -8,14 +8,15 @@ import { LayoutModule } from '@angular/cdk/layout';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
 import { MatSidenavModule } from '@angular/material/sidenav';
-import {MatCardModule} from '@angular/material/card';
+import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
 import { NavbarComponent } from './navbar/navbar.component';
 import { ContactUsComponent } from './contact-us/contact-us.component';
 import { CategoryComponent } from './category/category.component';
 import { SliderComponent } from './slider/slider.component';
-import {ScrollingModule} from '@angular/cdk/scrolling';
+import { ScrollingModule } from '@angular/cdk/scrolling';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
 
 
 
@@ -38,7 +39,8 @@ import {ScrollingModule} from '@angular/cdk/scrolling';
     MatListModule,
     MatCardModule,
     CarouselModule,
-    ScrollingModule
+    ScrollingModule,
+    MatProgressBarModule
   ]
 })
 export class AppModule { }

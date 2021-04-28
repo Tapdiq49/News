@@ -1,1 +1,61 @@
-<p>news-item works!</p>
+<section id="news-item">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-9 col-sm-12">
+        <div class="news-item">
+          <div class="news-detail-head">
+            <div class="news-detail-subhead">
+              <div class="title w-100">
+                <div>{{newsItem.title}}</div>
+                <div class="date">
+                  <span class="actual">{{newsItem.category.name}}</span>
+                  <span class="publishDay">
+                    <span class="time">{{ newsItem.createdAt | date:'H:mm' }}</span>
+                    <span class="date">{{ newsItem.createdAt | date:'dd, MMM, yyyy' }}</span>
+                  </span>
+                </div>
+              </div>
+              <!---->
+            </div>
+          </div>
+          <div class="news-detail-body">
+            <div class="news-image">
+              <img alt="title"
+                src="https://res.cloudinary.com/dilmx97dl/image/upload/v1619086503/{{newsItem.mainPhoto.image}}"
+                class="lightbox-single image-loaded">
+              <div borderbottom="2pxLightGrey" class="img-info">
+                <span class="ng-star-inserted">
+                  <span class="d-lg-inline d-sm-none me-1">Bizi</span>
+                  <a target="_blank" href="https://yandex.ru/news">
+                    <img src="../../../../assets/img/yandex-news.png" alt=""></a>
+                  <a target="_blank" href="https://news.google.com/topstories?hl=tr&amp;gl=TR&amp;ceid=TR:tr">
+                    <img src="../../../../assets/img/google.svg" alt=""></a>
+                  <a target="_blank" href="">
+                    <img src="../../../../assets/img/yandex-zen-news.png" alt=""></a>
+                  <span class="d-lg-inline d-sm-none">-da oxuyun</span></span>
+              </div>
+            </div>
+          </div>
+          <div class="news-detail-text">
+            <div class="main-text" innerHTML="{{ newsItem.text }}">
+              {{newsItem.text}}
+            </div>
+          </div>
+          <div class="news-detail-img" *ngFor="let item of newsItem.noneMainPhotos;">
+            <img alt="title" src="https://res.cloudinary.com/dilmx97dl/image/upload/v1619086503/{{item.image}}"
+              class="lightbox-single image-loaded">
+          </div>
+          <div class="news-detail-video" *ngIf="safeVideoLink != null ">
+            <iframe width="560" height="315" [src]="safeVideoLink" title="Video player" frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen></iframe>
+          </div>
+        </div>
+        <div class="news-detail-comment">          
+          <a class="fb-comments" [href]="window.location.href" data-width="200" data-numposts="50"></a>           
+        </div>
+      </div>
+    </div>
+  </div>
+  
+</section>

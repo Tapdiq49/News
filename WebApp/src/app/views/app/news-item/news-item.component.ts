@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { INewsItem } from 'src/app/shared/models/newsItem.model';
-import { ICategory } from 'src/app/shared/models/category.model'
 import { ApiService } from 'src/app/shared/services/api.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
+
 
 @Component({
   selector: 'app-news-item',
@@ -10,7 +11,12 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrls: ['./news-item.component.scss']
 })
 export class NewsItemComponent implements OnInit {
+
+  public window = window;
+
   public newsItemId: number = 0;
+
+  public safeVideoLink: SafeResourceUrl = null;
 
   public newsItem: INewsItem = {
     "category": { name: "", id: 0 },
@@ -28,14 +34,17 @@ export class NewsItemComponent implements OnInit {
     "mainPhoto" : { orderBy: 0, image: "", main : false, id: 0 },
     "noneMainPhotos" : []
   };
-  constructor(private apiService: ApiService, private route: ActivatedRoute, private router: Router) {
+  constructor(private apiService: ApiService, private route: ActivatedRoute, public router: Router, 
+    private _sanitizer: DomSanitizer ) {
     this.route.params.subscribe(params => {
       this.newsItemId = Number(params.newsItemId);
-      this.getNewsById();
+      this.getNewsById();          
     })
   }
 
-  ngOnInit(): void {
+  ngOnInit(): void {    
+    
+    
   }
 
   private getNewsById(): void {
@@ -51,6 +60,9 @@ export class NewsItemComponent implements OnInit {
             this.newsItem.noneMainPhotos.push(photo);
           }
         });
+        if (this.newsItem.videoLink) {
+          this.safeVideoLink = this._sanitizer.bypassSecurityTrustResourceUrl(this.newsItem.videoLink);
+        }        
       }
     )
 
