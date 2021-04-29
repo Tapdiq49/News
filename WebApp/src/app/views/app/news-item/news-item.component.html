@@ -46,7 +46,7 @@
               class="lightbox-single image-loaded">
           </div>
           <div class="news-detail-video" *ngIf="safeVideoLink != null ">
-            <iframe width="560" height="315" [src]="safeVideoLink" title="Video player" frameborder="0"
+            <iframe width="100%" height="400px" [src]="safeVideoLink" title="Video player" frameborder="0"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
               allowfullscreen></iframe>
           </div>
@@ -54,6 +54,9 @@
         <div class="news-detail-comment">          
           <a class="fb-comments" [href]="window.location.href" data-width="100%" data-numposts="50"></a>           
         </div>
+      </div>
+      <div class="col-md-3">
+        <app-last-news></app-last-news>
       </div>
     </div>
   </div>

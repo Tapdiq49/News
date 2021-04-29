@@ -5,6 +5,7 @@ import { environment } from 'src/environments/environment';
 import { IAbout } from '../models/about.model';
 import { ICategory } from '../models/category.model';
 import { IContact } from '../models/contact.model';
+import { ILastNews } from '../models/lastNews.model';
 import { INews, INewsList } from '../models/news.model';
 import { INewsItem } from '../models/newsItem.model';
 
@@ -40,5 +41,9 @@ export class ApiService {
   }
   public getNewsById(newsId : number):Observable<INewsItem>{
     return this.http.get<INewsItem>(`${environment.apiUrl}/v1/news/${newsId}`);
+  }
+
+  public getLastNews():Observable<ILastNews[]>{
+    return this.http.get<ILastNews[]>(`${environment.apiUrl}/v1/news/lastnews`);
   }
 }

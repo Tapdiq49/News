@@ -47,7 +47,7 @@ namespace Repository.Services
 
         public async Task<IEnumerable<News>> GetLastNews()
         {
-            return await _context.News.OrderByDescending(e => e.CreatedAt).Where(e => !e.SoftDeleted).Take(15).ToListAsync();
+            return await _context.News.OrderByDescending(e => e.CreatedAt).Where(e => !e.SoftDeleted).Include(e=>e.Category).Include(e=>e.Photos).Take(4).ToListAsync();
         }
 
         public async Task<News> GetNews(int id)

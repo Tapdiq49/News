@@ -1,0 +1,19 @@
+<div class="last-news">
+  <div class="last-news-head"><span>Son xəbərlər</span></div>
+  <ul>
+    <li class="ng-star-inserted" *ngFor="let item of lastNews;let i = index">
+      <a routerLink="/app/news/{{item.id}}">
+        <div class="ng-star-inserted">
+          <div class="news-title">{{item.title}}</div>
+          <div class="imageHolder">
+            <img src="https://res.cloudinary.com/dilmx97dl/image/upload/v1619086503/{{item.mainPhoto.image}}" class="ng-lazyloaded">
+          </div>
+          <div class="date">
+              <span class="actual">{{item.category.name}}</span>
+              <span class="publishDay">{{ item.createdAt | date:'H:mm dd/MM/YYYY' }}</span>
+          </div>
+        </div>
+      </a>
+    </li>
+  </ul>
+</div>

@@ -27,6 +27,7 @@ import { MatProgressBarModule } from '@angular/material/progress-bar';
     ContactUsComponent,
     CategoryComponent,
     SliderComponent,
+    
   ],
   imports: [
     CommonModule,
