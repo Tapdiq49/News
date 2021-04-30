@@ -1,4 +1,6 @@
 .last-news {
+  padding-right: 10px;
+  padding-left: 20px;
   .last-news-head {
     margin-bottom: 10px;
 
@@ -19,7 +21,7 @@
       border-bottom: 2px solid #efefef;
 
       a {
-        
+
         .news-title {
           font-style: normal;
           font-weight: 400;
@@ -39,7 +41,7 @@
             border-radius: 8px;
             object-fit: cover;
             transition: all .3s;
-            
+
           }
         }
 
@@ -60,13 +62,14 @@
             color: #373435;
           }
         }
-        &:hover{
-            .imageHolder{
-               
-                img{
-                    transform: scale(1.1);
-                }
+
+        &:hover {
+          .imageHolder {
+
+            img {
+              transform: scale(1.1);
             }
+          }
         }
       }
     }

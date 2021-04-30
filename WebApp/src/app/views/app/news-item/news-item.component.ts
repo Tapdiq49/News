@@ -1,4 +1,4 @@
-import { OnInit } from '@angular/core';
+import { AfterViewChecked, OnInit } from '@angular/core';
 import { INewsItem } from 'src/app/shared/models/newsItem.model';
 import { ApiService } from 'src/app/shared/services/api.service';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -12,7 +12,7 @@ declare var FB: any;
   templateUrl: './news-item.component.html',
   styleUrls: ['./news-item.component.scss']
 })
-export class NewsItemComponent implements OnInit {
+export class NewsItemComponent implements OnInit,AfterViewChecked {
 
   public window = window;
 
@@ -45,6 +45,9 @@ export class NewsItemComponent implements OnInit {
   }
 
   ngOnInit(): void {   
+    
+  }
+  ngAfterViewChecked():void{
     if (typeof (FB) != 'undefined'&& FB != null) { FB.XFBML.parse(); }
   }
 

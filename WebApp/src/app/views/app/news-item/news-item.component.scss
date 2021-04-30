@@ -1,9 +1,11 @@
 #news-item {
   padding: 30px 0;
   font-family: "Exo 2", sans-serif;
-  .news-item{
+
+  .news-item {
     border-bottom: 2px solid #efefef;
   }
+
   .news-detail-head {
     width: 100%;
 
@@ -21,7 +23,8 @@
         font-family: "Exo 2", sans-serif;
 
         .date {
-            margin-bottom: 20px;
+          margin-bottom: 20px;
+
           .actual {
             font-style: normal;
             font-weight: 500;
@@ -108,10 +111,21 @@
       }
     }
   }
-  .news-detail-text{
+
+  .news-detail-text {
     font-size: 19.5px;
   }
-  .news-detail-img{
+
+  .news-detail-img {
+    margin-bottom: 20px;
+  }
+
+  .news-detail-comment {
+    h2 {
+      font-family: "Exo 2", sans-serif;
       margin-bottom: 20px;
+      font-size: 22px;
+      color: #13317F;
+    }
   }
 }
