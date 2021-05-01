@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { INewsSlider } from 'src/app/shared/models/slider.model';
+import { INewsItem } from 'src/app/shared/models/newsItem.model';
 import { ApiService } from 'src/app/shared/services/api.service';
 
 @Component({
@@ -8,7 +8,7 @@ import { ApiService } from 'src/app/shared/services/api.service';
   styleUrls: ['./slider.component.scss']
 })
 export class SliderComponent implements OnInit {
-  newsSlider: INewsSlider[] = [];
+  newsSlider: INewsItem[] = [];
   constructor(private apiService: ApiService) { }
 
   ngOnInit(): void {

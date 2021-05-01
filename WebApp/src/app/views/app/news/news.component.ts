@@ -54,4 +54,26 @@ export class NewsComponent implements OnInit {
     }
   }
 
+  public newsLike(newsId: number):void {
+    this.apiService.newsLike(newsId, null).subscribe(
+      newsItem => {
+        this.news.news.forEach(element => {
+          if(element.id == newsId){
+            element.like = newsItem.like;
+          }
+        })
+      }
+    )
+  }
+  public newsDislike(newsId: number):void {
+    this.apiService.newsDislike(newsId, null).subscribe(
+      newsItem => {
+        this.news.news.forEach(element => {
+          if(element.id == newsId){
+            element.dislike = newsItem.dislike;
+          }
+        })
+      }
+    )
+  }
 }

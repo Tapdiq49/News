@@ -1,4 +1,5 @@
 ﻿using ApiService.Resources.News;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Repository.Data.Entities;
@@ -86,7 +87,7 @@ namespace ApiService.Controllers.v1
         }
 
         [HttpPost]
-        [Route("{newsId:int}/like")]
+        [Route("{newsId:int}/like")]                
         public async Task<IActionResult> Like([FromRoute] int newsId)
         {
             string token;

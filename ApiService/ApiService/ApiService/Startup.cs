@@ -41,8 +41,8 @@ namespace ApiService
                                   builder =>
                                   {
                                       builder.WithOrigins("http://localhost:4200")
+                                             .AllowCredentials()
                                              .AllowAnyHeader()
-                                             .AllowAnyOrigin()
                                              .AllowAnyMethod();
                                   });
             });

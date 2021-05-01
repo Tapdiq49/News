@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ILastNews } from 'src/app/shared/models/lastNews.model';
+import { INewsItem } from 'src/app/shared/models/newsItem.model';
 import { ApiService } from 'src/app/shared/services/api.service';
 
 @Component({
@@ -8,7 +8,7 @@ import { ApiService } from 'src/app/shared/services/api.service';
   styleUrls: ['./last-news.component.scss']
 })
 export class LastNewsComponent implements OnInit {
-  lastNews: ILastNews[] = [];
+  lastNews: INewsItem[] = [];
   constructor(private apiService: ApiService) { }
 
   ngOnInit(): void {

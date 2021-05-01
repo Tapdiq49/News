@@ -5,11 +5,8 @@ import { environment } from 'src/environments/environment';
 import { IAbout } from '../models/about.model';
 import { ICategory } from '../models/category.model';
 import { IContact } from '../models/contact.model';
-import { ILastNews } from '../models/lastNews.model';
-import { INewsLike } from '../models/like.model';
 import { INews, INewsList } from '../models/news.model';
 import { INewsItem } from '../models/newsItem.model';
-import { INewsSlider } from '../models/slider.model';
 
 
 
@@ -45,14 +42,19 @@ export class ApiService {
     return this.http.get<INewsItem>(`${environment.apiUrl}/v1/news/${newsId}`);
   }
 
-  public getLastNews():Observable<ILastNews[]>{
-    return this.http.get<ILastNews[]>(`${environment.apiUrl}/v1/news/lastnews`);
+  public getLastNews():Observable<INewsItem[]>{
+    return this.http.get<INewsItem[]>(`${environment.apiUrl}/v1/news/lastnews`);
   }
 
-  public newsLike(newsId: number, data:any): Observable<INewsLike> {
-    return this.http.post<any>(`${environment.apiUrl}/v1/news/${newsId}/like`, data);
+  public newsLike(newsId: number, data:any): Observable<INewsItem> {
+    return this.http.post<any>(`${environment.apiUrl}/v1/news/${newsId}/like`, data, {withCredentials: true});
   }
-  public getSliderNews():Observable<INewsSlider[]>{
-    return this.http.get<INewsSlider[]>(`${environment.apiUrl}/v1/news/slider`);
+
+  public newsDislike(newsId: number, data:any): Observable<INewsItem> {
+    return this.http.post<any>(`${environment.apiUrl}/v1/news/${newsId}/dislike`, data, {withCredentials: true});
+  }
+
+  public getSliderNews():Observable<INewsItem[]>{
+    return this.http.get<INewsItem[]>(`${environment.apiUrl}/v1/news/slider`);
   }
 }
