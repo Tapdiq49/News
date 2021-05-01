@@ -1,6 +1,15 @@
 import { ICategory } from "./category.model";
 
-export interface INewsSlider {
+export interface IPhoto {
+    orderBy: number;
+    main: boolean;
+    image: string;
+    newsId: number;
+    id: number;
+
+}
+
+export interface INewsLike {
     title: string;
     text: string;
     comment: boolean;
@@ -9,16 +18,9 @@ export interface INewsSlider {
     dislike: number;
     view: number;
     videoLink?: any;
+    createdAt: Date;
     photos: IPhoto[];
     category: ICategory;
     id: number;
-    createdAt: Date;
-    mainPhoto: IPhoto;
-    noneMainPhotos : IPhoto[];
 }
-export interface IPhoto {
-    orderBy: number;
-    main: boolean;
-    image: string;
-    id: number;
-}
+

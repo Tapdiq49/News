@@ -14,7 +14,6 @@ import { MatListModule } from '@angular/material/list';
 import { NavbarComponent } from './navbar/navbar.component';
 import { ContactUsComponent } from './contact-us/contact-us.component';
 import { CategoryComponent } from './category/category.component';
-import { SliderComponent } from './slider/slider.component';
 import { ScrollingModule } from '@angular/cdk/scrolling';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 
@@ -25,13 +24,13 @@ import { MatProgressBarModule } from '@angular/material/progress-bar';
     AppComponent,
     NavbarComponent,
     ContactUsComponent,
-    CategoryComponent,
-    SliderComponent,
+    CategoryComponent
     
   ],
   imports: [
     CommonModule,
     AppRoutingModule,
+    CarouselModule,
     LayoutModule,
     MatToolbarModule,
     MatButtonModule,
@@ -39,7 +38,6 @@ import { MatProgressBarModule } from '@angular/material/progress-bar';
     MatIconModule,
     MatListModule,
     MatCardModule,
-    CarouselModule,
     ScrollingModule,
     MatProgressBarModule
   ]

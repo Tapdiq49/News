@@ -1,0 +1,20 @@
+<div class="slider">
+  <div class="mainOwlSlider">
+    <owl-carousel-o [options]="customOptions">
+      <ng-template carouselSlide *ngFor="let item of newsSlider;let i = index">
+        <a href="" class="main-slider" routerLink="/app/news/{{item.id}}">
+          <img src="https://res.cloudinary.com/dilmx97dl/image/upload/v1619086503/{{item.mainPhoto.image}}" alt="">
+          <h3>{{item.title}}</h3>
+        </a>
+        <div class="slider-info ng-star-inserted">
+          <div class="auth-info justify-content-end">
+            <div  class="news-date">
+              <p>{{item.category.name}}</p>
+              <span>{{ item.createdAt | date:'H:mm dd/MM/YYYY' }}</span>
+            </div>
+          </div>
+        </div>
+      </ng-template>
+    </owl-carousel-o>
+  </div>
+</div>

@@ -93,7 +93,7 @@ namespace Repository.Services
 
         public async Task<IEnumerable<News>> GetSliderByNews()
         {
-            return await _context.News.OrderByDescending(e => e.View).Where(e => !e.SoftDeleted && e.CreatedAt >= DateTime.Now.AddHours(-24)).Take(5).ToListAsync();
+            return await _context.News.OrderByDescending(e => e.View).Where(e => !e.SoftDeleted && e.CreatedAt >= DateTime.Now.AddHours(-800)).Include(e=>e.Category).Include(e=>e.Photos).Take(5).ToListAsync();
         }
 
         public async Task<News> LikeDislike(string token, int newsId, bool isLiked)
