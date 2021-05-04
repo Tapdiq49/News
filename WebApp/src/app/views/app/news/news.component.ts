@@ -20,7 +20,8 @@ export class NewsComponent implements OnInit {
       this.categoryId = Number(params.categoryId);
       this.searchText = params.search;
 
-      this.getNews();
+      this.currentCount = 0;
+      this.getNews(false);
     })
 
   }
@@ -28,49 +29,65 @@ export class NewsComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  private getNews(): void {
+  private getNews(paginationUpdate : boolean): void {
     if(this.searchText){
       this.apiService.search(this.searchText,this.currentCount).subscribe(
         news => {
-          this.news = news;
-          this.news.news.forEach(element => {
+          news.news.forEach(element => {
             element.photos.forEach(photo => {
               if (photo.main) {
                 element.mainPhoto = photo;
               }
             });
           });
+          if(paginationUpdate){
+            this.news.news = this.news.news.concat(news.news) ;
+          }else{
+            this.news.news = news.news;
+          }
+          this.news.count = news.count;
         }
       )
     }else{
       if (this.categoryId == 0) {
         this.apiService.getNews(this.currentCount).subscribe(
           news => {
-            this.news = news;
-            this.news.news.forEach(element => {
+            news.news.forEach(element => {
               element.photos.forEach(photo => {
                 if (photo.main) {
                   element.mainPhoto = photo;
                 }
               });
             });
+            if(paginationUpdate){
+              this.news.news = this.news.news.concat(news.news) ;
+            }else{
+              this.news.news = news.news;
+            }
+            this.news.count = news.count;
           }
         )
       }else{
         this.apiService.getCategoryNews(this.categoryId,this.currentCount).subscribe(
           news => {
-            this.news = news;
-            this.news.news.forEach(element => {
+            news.news.forEach(element => {
               element.photos.forEach(photo => {
                 if (photo.main) {
                   element.mainPhoto = photo;
                 }
               });
             });
+            if(paginationUpdate){
+              this.news.news = this.news.news.concat(news.news) ;
+            }else{
+              this.news.news = news.news;
+            }
+            this.news.count = news.count;
           }
         )
       }
     }
+   
   }
 
   public newsLike(newsId: number):void {
@@ -96,5 +113,8 @@ export class NewsComponent implements OnInit {
     )
   }
 
-  
+  public changeCount():void{
+    this.currentCount = this.news.count;
+    this.getNews(true);
+  }
 }

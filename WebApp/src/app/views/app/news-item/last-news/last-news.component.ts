@@ -15,7 +15,7 @@ export class LastNewsComponent implements OnInit {
     this.getLastNews();
   }
   private getLastNews():void {
-    this.apiService.getLastNews().subscribe(
+    this.apiService.getLastNews(4).subscribe(
       lastNews => {
         this.lastNews = lastNews;
         this.lastNews.forEach(element => {

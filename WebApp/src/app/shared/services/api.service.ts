@@ -42,8 +42,8 @@ export class ApiService {
     return this.http.get<INewsItem>(`${environment.apiUrl}/v1/news/${newsId}`);
   }
 
-  public getLastNews():Observable<INewsItem[]>{
-    return this.http.get<INewsItem[]>(`${environment.apiUrl}/v1/news/lastnews`);
+  public getLastNews(count : number):Observable<INewsItem[]>{
+    return this.http.get<INewsItem[]>(`${environment.apiUrl}/v1/news/lastnews?count=${count}`);
   }
 
   public newsLike(newsId: number, data:any): Observable<INewsItem> {

@@ -11,7 +11,7 @@ namespace Repository.Services
         Task<News> GetNews(int id);
         Task<NewsResponse> GetCategoryAllNews(int categoryId, int viewCount);
         Task<NewsResponse> GetSearchByTitleLike(string search, int viewCount);
-        Task<IEnumerable<News>> GetLastNews();
+        Task<IEnumerable<News>> GetLastNews(int count);
         Task<IEnumerable<News>> GetSliderByNews();
         Task<IEnumerable<News>> GetNewsSortedByView();
         Task<IEnumerable<News>> GetNewsSortedByLike();

@@ -58,9 +58,9 @@ namespace ApiService.Controllers.v1
 
         [HttpGet]
         [Route("lastnews")]
-        public async Task<IActionResult> GetLastNews()
+        public async Task<IActionResult> GetLastNews([FromQuery] int count)
         {
-            var news = await _newsService.GetLastNews();
+            var news = await _newsService.GetLastNews(count);
             return Ok(news);
         }
 

@@ -31,7 +31,7 @@ namespace Repository.Services
 
         public async Task<NewsResponse> GetAllNews(int viewCount)
         {
-            var count = viewCount + 20;
+            var count = viewCount + 21;
             var news = await _context.News.OrderByDescending(n=>n.CreatedAt).Where(n => !n.SoftDeleted).Include(n=>n.Photos).Include(n=>n.Category).Skip(viewCount).Take(count).ToListAsync();
             var res = new NewsResponse(news, viewCount + news.Count);
             return res;
@@ -39,15 +39,15 @@ namespace Repository.Services
 
         public async Task<NewsResponse> GetCategoryAllNews(int categoryId, int viewCount)
         {
-            var count = viewCount + 20;
+            var count = viewCount + 21;
             var news = await _context.News.OrderByDescending(n => n.CreatedAt).Where(n => !n.SoftDeleted && n.CategoryId==categoryId).Include(n => n.Photos).Include(n => n.Category).Skip(viewCount).Take(count).ToListAsync();
             var res = new NewsResponse(news, viewCount + news.Count);
             return res;
         }
 
-        public async Task<IEnumerable<News>> GetLastNews()
+        public async Task<IEnumerable<News>> GetLastNews(int count)
         {
-            return await _context.News.OrderByDescending(e => e.CreatedAt).Where(e => !e.SoftDeleted).Include(e=>e.Category).Include(e=>e.Photos).Take(4).ToListAsync();
+            return await _context.News.OrderByDescending(e => e.CreatedAt).Where(e => !e.SoftDeleted).Include(e=>e.Category).Include(e=>e.Photos).Take(count).ToListAsync();
         }
 
         public async Task<News> GetNews(int id)
@@ -88,7 +88,7 @@ namespace Repository.Services
 
         public async Task<NewsResponse> GetSearchByTitleLike(string search, int viewCount)
         {
-            var count = viewCount + 20;
+            var count = viewCount + 21;
             var news = await _context.News.Where(n => !n.SoftDeleted && n.Title.Contains(search)).Include(n => n.Photos).Include(n => n.Category).Skip(viewCount).Take(count).ToListAsync();
             var res = new NewsResponse(news, viewCount + news.Count);
             return res;

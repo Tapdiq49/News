@@ -43,6 +43,11 @@
           </div>
         </div>
       </div>
+      <div class="col-md-12">
+        <div class="d-flex justify-content-center" *ngIf="news.count > 20">
+          <button (click)= "changeCount()" class="loadMore">Daha cox</button>
+        </div>
+      </div>
     </div>
   </div>
 </section>
