@@ -16,6 +16,8 @@ import { ContactUsComponent } from './contact-us/contact-us.component';
 import { CategoryComponent } from './category/category.component';
 import { ScrollingModule } from '@angular/cdk/scrolling';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
+import { SearchComponent } from './search/search.component';
+import { FormsModule } from '@angular/forms';
 
 
 
@@ -25,7 +27,8 @@ import { MatProgressBarModule } from '@angular/material/progress-bar';
     AppComponent,
     NavbarComponent,
     ContactUsComponent,
-    CategoryComponent
+    CategoryComponent,
+    SearchComponent
     
   ],
   imports: [
@@ -40,7 +43,8 @@ import { MatProgressBarModule } from '@angular/material/progress-bar';
     MatListModule,
     MatCardModule,
     ScrollingModule,
-    MatProgressBarModule
+    MatProgressBarModule,
+    FormsModule
   ]
 })
 export class AppModule { }

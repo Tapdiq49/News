@@ -57,4 +57,7 @@ export class ApiService {
   public getSliderNews():Observable<INewsItem[]>{
     return this.http.get<INewsItem[]>(`${environment.apiUrl}/v1/news/slider`);
   }
+  public search(search:string,count : number):Observable<INewsList>{
+    return this.http.get<INewsList>(`${environment.apiUrl}/v1/news/search?search=${search}&viewCount=${count}`);
+  }
 }

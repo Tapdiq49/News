@@ -9,13 +9,17 @@ import { ApiService } from 'src/app/shared/services/api.service';
   styleUrls: ['./news.component.scss']
 })
 export class NewsComponent implements OnInit {
+  private currentCount = 0;
   public categoryId: number = 0;
+  public searchText: string = "";
   public news: INewsList = {
     "news": [], "count": 0
   };
   constructor(private apiService: ApiService, private route: ActivatedRoute, private router: Router) {
     this.route.params.subscribe(params => {
       this.categoryId = Number(params.categoryId);
+      this.searchText = params.search;
+
       this.getNews();
     })
 
@@ -25,8 +29,8 @@ export class NewsComponent implements OnInit {
   }
 
   private getNews(): void {
-    if (this.categoryId == 0) {
-      this.apiService.getNews(0).subscribe(
+    if(this.searchText){
+      this.apiService.search(this.searchText,this.currentCount).subscribe(
         news => {
           this.news = news;
           this.news.news.forEach(element => {
@@ -39,18 +43,33 @@ export class NewsComponent implements OnInit {
         }
       )
     }else{
-      this.apiService.getCategoryNews(this.categoryId,0).subscribe(
-        news => {
-          this.news = news;
-          this.news.news.forEach(element => {
-            element.photos.forEach(photo => {
-              if (photo.main) {
-                element.mainPhoto = photo;
-              }
+      if (this.categoryId == 0) {
+        this.apiService.getNews(this.currentCount).subscribe(
+          news => {
+            this.news = news;
+            this.news.news.forEach(element => {
+              element.photos.forEach(photo => {
+                if (photo.main) {
+                  element.mainPhoto = photo;
+                }
+              });
             });
-          });
-        }
-      )
+          }
+        )
+      }else{
+        this.apiService.getCategoryNews(this.categoryId,this.currentCount).subscribe(
+          news => {
+            this.news = news;
+            this.news.news.forEach(element => {
+              element.photos.forEach(photo => {
+                if (photo.main) {
+                  element.mainPhoto = photo;
+                }
+              });
+            });
+          }
+        )
+      }
     }
   }
 
@@ -76,4 +95,6 @@ export class NewsComponent implements OnInit {
       }
     )
   }
+
+  
 }

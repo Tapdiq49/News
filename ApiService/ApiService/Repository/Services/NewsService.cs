@@ -86,9 +86,12 @@ namespace Repository.Services
             return  _context.News.Include(n => n.Photos).Include(n => n.Category).FirstOrDefault(e=> e.Id == id);
         }
 
-        public async Task<IEnumerable<News>> GetSearchByTitleLike(string search)
+        public async Task<NewsResponse> GetSearchByTitleLike(string search, int viewCount)
         {
-            return await _context.News.Where(e => !e.SoftDeleted && e.Title.Contains(search)).Take(30).ToListAsync();
+            var count = viewCount + 20;
+            var news = await _context.News.Where(n => !n.SoftDeleted && n.Title.Contains(search)).Include(n => n.Photos).Include(n => n.Category).Skip(viewCount).Take(count).ToListAsync();
+            var res = new NewsResponse(news, viewCount + news.Count);
+            return res;
         }
 
         public async Task<IEnumerable<News>> GetSliderByNews()

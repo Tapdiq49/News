@@ -46,12 +46,14 @@ namespace ApiService.Controllers.v1
                 return StatusCode(404, new { e.Message });
             }
         }
+
         [HttpGet]
         [Route("search")]
-        public async Task<IActionResult> GetSearchByTitleLike([FromBody] SearchResource search)
+        public async Task<IActionResult> GetSearchByTitleLike([FromQuery] string search, [FromQuery] int viewCount)
         {
-            var news = await _newsService.GetSearchByTitleLike(search.search);
-            return Ok(news);
+            var news = await _newsService.GetSearchByTitleLike(search, viewCount);
+            var newsResource = _mapper.Map<NewsResponse, NewsResponseResource>(news);
+            return Ok(newsResource);
         }
 
         [HttpGet]
