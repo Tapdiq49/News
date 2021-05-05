@@ -17,6 +17,9 @@ export class SliderComponent implements OnInit {
 
   customOptions: any = {
     loop: true,
+    autoplay:true,
+    autoplayTimeout:5000,
+    autoplayHoverPause:false,
     mouseDrag: true,
     touchDrag: true,
     pullDrag: true,
