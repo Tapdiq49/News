@@ -5,12 +5,14 @@ import { CarouselModule } from 'ngx-owl-carousel-o';
 import { NewsRoutingModule } from './news-routing.module';
 import { NewsComponent } from './news.component';
 import { SliderComponent } from './slider/slider.component';
+import { LastNewsComponent } from './last-news/last-news.component';
 
 
 @NgModule({
   declarations: [
     NewsComponent,
-    SliderComponent
+    SliderComponent,
+    LastNewsComponent
   ],
   imports: [
     CommonModule,
