@@ -106,7 +106,9 @@ namespace ApiService.Controllers.v1
             Response.Cookies.Append("token", token, new Microsoft.AspNetCore.Http.CookieOptions
             {
                 Expires = DateTime.Now.AddYears(2),
-                HttpOnly = true
+                HttpOnly = true,
+                SameSite = SameSiteMode.None,
+                Secure = true
             });
             try
             {
@@ -141,7 +143,9 @@ namespace ApiService.Controllers.v1
             Response.Cookies.Append("token", token, new Microsoft.AspNetCore.Http.CookieOptions
             {
                 Expires = DateTime.Now.AddYears(2),
-                HttpOnly = true
+                HttpOnly = true,
+                SameSite = SameSiteMode.None,
+                Secure = true
             });
             try
             {

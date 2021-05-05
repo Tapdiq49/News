@@ -89,7 +89,7 @@ namespace Repository.Services
         public async Task<NewsResponse> GetSearchByTitleLike(string search, int viewCount)
         {
             var count = viewCount + 21;
-            var news = await _context.News.Where(n => !n.SoftDeleted && n.Text.Contains(search)).Include(n => n.Photos).Include(n => n.Category).Skip(viewCount).Take(count).ToListAsync();
+            var news = await _context.News.Where(n => !n.SoftDeleted && n.Title.Contains(search)).Include(n => n.Photos).Include(n => n.Category).Skip(viewCount).Take(count).ToListAsync();
             var res = new NewsResponse(news, viewCount + news.Count);
             return res;
         }

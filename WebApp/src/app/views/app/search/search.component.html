@@ -1,6 +1,6 @@
 <form (submit)="search()" novalidate="" autocomplete="on" validate="" class="ng-pristine ng-valid ng-touched">
   <div class="search">
-    <input [(ngModel)]="searchText" [ngModelOptions]="{standalone: true}" type="text"  placeholder="Xəbər axtar"
+    <input id="newsSearch" [(ngModel)]="searchText" [ngModelOptions]="{standalone: true}" type="text"  placeholder="Xəbər axtar"
       class="ng-pristine ng-valid ng-touched">
     <img (click)="search()" src="../../../../assets/img/search.svg" alt="" style="cursor: pointer;">
   </div>

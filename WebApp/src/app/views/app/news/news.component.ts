@@ -19,9 +19,11 @@ export class NewsComponent implements OnInit {
     this.route.params.subscribe(params => {
       this.categoryId = Number(params.categoryId);
       this.searchText = params.search;
-
       this.currentCount = 0;
       this.getNews(false);
+      if(!this.searchText){
+        (<HTMLInputElement>document.getElementById("newsSearch")).value="";
+      }
     })
 
   }
