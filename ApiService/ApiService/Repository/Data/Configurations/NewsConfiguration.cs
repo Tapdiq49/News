@@ -17,6 +17,7 @@ namespace Repository.Data.Configurations
             builder.Property(e => e.View).IsRequired().HasDefaultValue(0);
             builder.HasOne(e => e.Category).WithMany().HasForeignKey(e => e.CategoryId).OnDelete(DeleteBehavior.Restrict);
             builder.HasMany(e => e.Photos).WithOne().HasForeignKey(e => e.NewsId).IsRequired().OnDelete(DeleteBehavior.Cascade);
+            builder.HasMany(e => e.LikeDislikes).WithOne().HasForeignKey(e => e.NewsId).IsRequired().OnDelete(DeleteBehavior.Cascade);
 
             builder.ToTable("News");
         }

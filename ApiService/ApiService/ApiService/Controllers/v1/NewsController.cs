@@ -29,6 +29,29 @@ namespace ApiService.Controllers.v1
         {
             var news = await _newsService.GetAllNews(viewCount);
             var newsResource = _mapper.Map<NewsResponse, NewsResponseResource>(news);
+            
+            string tokenOptional;
+            Request.Cookies.TryGetValue("token", out tokenOptional);
+            if (tokenOptional != null)
+            {
+                foreach (var item in newsResource.news)
+                {
+                    var likeDislike = item.LikeDislikes.FirstOrDefault(e => e.Token == tokenOptional);
+                    if (likeDislike != null)
+                    {
+                        if (likeDislike.IsLiked)
+                        {
+                            item.Liked = true;
+                        }
+                        else
+                        {
+                            item.Disliked = true;
+                        }
+                    }
+                }
+                
+            }
+           
             return Ok(newsResource);
         }
 
@@ -53,6 +76,27 @@ namespace ApiService.Controllers.v1
         {
             var news = await _newsService.GetSearchByTitleLike(search, viewCount);
             var newsResource = _mapper.Map<NewsResponse, NewsResponseResource>(news);
+            string tokenOptional;
+            Request.Cookies.TryGetValue("token", out tokenOptional);
+            if (tokenOptional != null)
+            {
+                foreach (var item in newsResource.news)
+                {
+                    var likeDislike = item.LikeDislikes.FirstOrDefault(e => e.Token == tokenOptional);
+                    if (likeDislike != null)
+                    {
+                        if (likeDislike.IsLiked)
+                        {
+                            item.Liked = true;
+                        }
+                        else
+                        {
+                            item.Disliked = true;
+                        }
+                    }
+                }
+
+            }
             return Ok(newsResource);
         }
 

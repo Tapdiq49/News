@@ -13,6 +13,7 @@ namespace Repository.Data.Entities
         public int View { get; set; }
         public string VideoLink { get; set; }
         public ICollection<NewsPhoto> Photos { get; set; }
+        public ICollection<LikeDislike> LikeDislikes { get; set; }
         public Category Category { get; set; }
 
     }

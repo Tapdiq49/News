@@ -9,7 +9,7 @@ namespace Repository.Data.Configurations
         public void Configure(EntityTypeBuilder<LikeDislike> builder)
         {
             builder.Property(e => e.Token).HasMaxLength(150).IsRequired();
-            builder.HasOne(e => e.News).WithMany().HasForeignKey(e => e.NewsId).OnDelete(DeleteBehavior.Cascade);
+            builder.Property(e => e.IsLiked).IsRequired();
 
             builder.ToTable("LikesDislikes");
         }

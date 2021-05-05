@@ -181,6 +181,42 @@
           cursor: pointer;
         }
       }
+      .isLiked{
+        color: #008d1b;
+        &:hover{
+          color: #008d1b;
+          background-color: #f2f2f2;
+          border-color: #ddd;
+          cursor: inherit;
+        }
+      }
+      .liked{
+        color: #aaa;
+        &:hover{
+          color: #aaa;
+          background-color: #f2f2f2;
+          border-color:#ddd;
+          cursor: inherit;
+        }
+      }
+      .isDisliked{
+        color: #dc0000;
+        &:hover{
+          color: #dc0000;
+          background-color: #f2f2f2;
+          border-color: #ddd;
+          cursor: inherit;
+        }
+      }
+      .disliked{
+        color: #aaa;
+        &:hover{
+          color: #aaa;
+          background-color: #f2f2f2;
+          border-color:#ddd;
+          cursor: inherit;
+        }
+      }
     }
 
     &:hover {

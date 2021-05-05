@@ -19,6 +19,8 @@ export interface INews{
     view: number;
     videoLink?: any;
     category: ICategory;
+    liked:boolean;
+    disliked:boolean
 
 }
 export interface IPhoto{

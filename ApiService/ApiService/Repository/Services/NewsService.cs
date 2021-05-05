@@ -32,7 +32,7 @@ namespace Repository.Services
         public async Task<NewsResponse> GetAllNews(int viewCount)
         {
             var count = viewCount + 21;
-            var news = await _context.News.OrderByDescending(n=>n.CreatedAt).Where(n => !n.SoftDeleted).Include(n=>n.Photos).Include(n=>n.Category).Skip(viewCount).Take(count).ToListAsync();
+            var news = await _context.News.OrderByDescending(n=>n.CreatedAt).Where(n => !n.SoftDeleted).Include(n=>n.Photos).Include(n=>n.Category).Include(e=>e.LikeDislikes).Skip(viewCount).Take(count).ToListAsync();
             var res = new NewsResponse(news, viewCount + news.Count);
             return res;
         }
@@ -40,7 +40,7 @@ namespace Repository.Services
         public async Task<NewsResponse> GetCategoryAllNews(int categoryId, int viewCount)
         {
             var count = viewCount + 21;
-            var news = await _context.News.OrderByDescending(n => n.CreatedAt).Where(n => !n.SoftDeleted && n.CategoryId==categoryId).Include(n => n.Photos).Include(n => n.Category).Skip(viewCount).Take(count).ToListAsync();
+            var news = await _context.News.OrderByDescending(n => n.CreatedAt).Where(n => !n.SoftDeleted && n.CategoryId==categoryId).Include(n => n.Photos).Include(n => n.Category).Include(e => e.LikeDislikes).Skip(viewCount).Take(count).ToListAsync();
             var res = new NewsResponse(news, viewCount + news.Count);
             return res;
         }
@@ -89,7 +89,7 @@ namespace Repository.Services
         public async Task<NewsResponse> GetSearchByTitleLike(string search, int viewCount)
         {
             var count = viewCount + 21;
-            var news = await _context.News.Where(n => !n.SoftDeleted && n.Title.Contains(search)).Include(n => n.Photos).Include(n => n.Category).Skip(viewCount).Take(count).ToListAsync();
+            var news = await _context.News.Where(n => !n.SoftDeleted && n.Title.Contains(search)).Include(n => n.Photos).Include(n => n.Category).Include(e => e.LikeDislikes).Skip(viewCount).Take(count).ToListAsync();
             var res = new NewsResponse(news, viewCount + news.Count);
             return res;
         }
@@ -118,7 +118,9 @@ namespace Repository.Services
                 LikeDislike newLikeDislike = new LikeDislike
                 {
                     Token = token,
-                    NewsId = newsId
+                    NewsId = newsId,
+                    IsLiked = isLiked
+                    
                 };
                 await _context.LikesDislikes.AddAsync(newLikeDislike);
                 await _context.SaveChangesAsync();

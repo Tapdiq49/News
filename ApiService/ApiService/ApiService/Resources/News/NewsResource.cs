@@ -15,9 +15,12 @@ namespace ApiService.Resources.News
         public int Like { get; set; }
         public int Dislike { get; set; }
         public ICollection<NewsPhoto> Photos { get; set; }
+        public ICollection<LikeDislike> LikeDislikes { get; set; }
         public int View { get; set; }
         public string VideoLink { get; set; }
         public Category Category { get; set; }
+        public bool Liked { get; set; } = false;
+        public bool Disliked { get; set; } = false;
 
     }
 }

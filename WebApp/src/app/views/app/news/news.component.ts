@@ -98,6 +98,7 @@ export class NewsComponent implements OnInit {
         this.news.news.forEach(element => {
           if(element.id == newsId){
             element.like = newsItem.like;
+            element.liked = true;
           }
         })
       }
@@ -109,6 +110,7 @@ export class NewsComponent implements OnInit {
         this.news.news.forEach(element => {
           if(element.id == newsId){
             element.dislike = newsItem.dislike;
+            element.disliked = true;
           }
         })
       }

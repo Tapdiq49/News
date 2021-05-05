@@ -33,10 +33,10 @@ export class ApiService {
 
   
   public getNews(count : number):Observable<INewsList>{
-    return this.http.get<INewsList>(`${environment.apiUrl}/v1/news?viewCount=${count}`);
+    return this.http.get<INewsList>(`${environment.apiUrl}/v1/news?viewCount=${count}`, {withCredentials: true});
   }
   public getCategoryNews(categoryId : number,count : number):Observable<INewsList>{
-    return this.http.get<INewsList>(`${environment.apiUrl}/v1/category/${categoryId}/news?viewCount=${count}`);
+    return this.http.get<INewsList>(`${environment.apiUrl}/v1/category/${categoryId}/news?viewCount=${count}`, {withCredentials: true});
   }
   public getNewsById(newsId : number):Observable<INewsItem>{
     return this.http.get<INewsItem>(`${environment.apiUrl}/v1/news/${newsId}`);
@@ -58,6 +58,6 @@ export class ApiService {
     return this.http.get<INewsItem[]>(`${environment.apiUrl}/v1/news/slider`);
   }
   public search(search:string,count : number):Observable<INewsList>{
-    return this.http.get<INewsList>(`${environment.apiUrl}/v1/news/search?search=${search}&viewCount=${count}`);
+    return this.http.get<INewsList>(`${environment.apiUrl}/v1/news/search?search=${search}&viewCount=${count}`, {withCredentials: true});
   }
 }
