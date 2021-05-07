@@ -33,3 +33,16 @@ li {
   font-family: 'Exo 2', sans-serif;
   margin-right: 20px;
 }
+$breakpoint-tablet: 770px;
+
+@media (max-width: $breakpoint-tablet) {
+ .social-links{
+   display: none;
+ }
+ .day{
+   display: none;
+ }
+ .abouts{
+   margin-right: 0;
+ }
+}

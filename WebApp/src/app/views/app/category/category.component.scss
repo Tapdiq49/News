@@ -20,3 +20,9 @@
     }
   }
 }
+$breakpoint-tablet: 770px;
+@media (max-width: $breakpoint-tablet){
+  .category{
+    display: none;
+  }
+}

@@ -61,3 +61,10 @@ footer {
   width: 100%;
   z-index: 99;
 }
+$breakpoint-tablet: 770px;
+
+@media (max-width: $breakpoint-tablet) {
+ .responsive{
+   justify-content: space-between !important;
+ }
+}
