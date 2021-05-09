@@ -37,7 +37,7 @@
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
             <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center overflow-hidden" href="index.html">
+            <a class="sidebar-brand d-flex align-items-center justify-content-center overflow-hidden" asp-controller="dashboard" asp-action="index">
                 <div class="sidebar-brand-icon overflow-hidden">
                     <img src="~/img/Logo.jpeg" class="w-100">
                 </div>
@@ -104,7 +104,7 @@
                         <a class="collapse-item" asp-controller="account" asp-action="DoneChangePassüord" target="_blank">Done Change Password</a>
                         <div class="collapse-divider"></div>
                         <h6 class="collapse-header">Other Pages:</h6>
-                        <a class="collapse-item" href="404.html">404 Page</a>
+                        <a class="collapse-item" asp-controller="dashboard" asp-action="error">404 Page</a>
                     </div>
                 </div>
             </li>
