@@ -127,3 +127,12 @@ img{
 
   }
 }
+$breakpoint-tablet: 768px;
+@media (max-width: $breakpoint-tablet) {
+  .owl-nav{
+    margin-bottom: -45px !important;
+  }
+  .owl-dots{
+    margin-bottom: -45px !important;
+  }
+}

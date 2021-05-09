@@ -14,6 +14,12 @@ export class CategoryComponent implements OnInit {
   ngOnInit(): void {
     this.getCategories();
   }
+  openMenu(event: Event) { 
+    document.getElementsByClassName("navbar-menus")[0].classList.add("show");
+  }
+  closeMenu(event: Event) { 
+    document.getElementsByClassName("navbar-menus")[0].classList.remove("show");
+  }
   private getCategories():void {
     this.apiService.getCategories().subscribe(
       categories => {

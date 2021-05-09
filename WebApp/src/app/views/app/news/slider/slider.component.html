@@ -4,7 +4,9 @@
       <ng-template carouselSlide *ngFor="let item of newsSlider;let i = index">
         <a href="" class="main-slider" routerLink="/app/news/{{item.id}}">
           <img src="https://res.cloudinary.com/dilmx97dl/image/upload/v1619086503/{{item.mainPhoto.image}}" alt="">
-          <h3>{{item.title}}</h3>
+          <div class="news-title">
+            <h3>{{item.title}}</h3>
+          </div>
         </a>
         <div class="slider-info ng-star-inserted">
           <div class="auth-info justify-content-end">

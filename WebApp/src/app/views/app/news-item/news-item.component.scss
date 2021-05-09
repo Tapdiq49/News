@@ -105,6 +105,8 @@
               width: 100px;
               border-radius: 0;
               height: auto;
+              margin-bottom: 20px;
+              vertical-align: top;
             }
           }
         }
@@ -127,5 +129,12 @@
       font-size: 22px;
       color: #13317F;
     }
+  }
+}
+$breakpoint-tablet: 768px;
+
+@media (max-width: $breakpoint-tablet) {
+  .span-responsive{
+    display: none !important;
   }
 }

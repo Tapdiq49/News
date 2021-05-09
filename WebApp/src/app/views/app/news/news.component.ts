@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { INewsList } from 'src/app/shared/models/news.model';
 import { ApiService } from 'src/app/shared/services/api.service';

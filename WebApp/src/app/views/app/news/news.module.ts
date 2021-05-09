@@ -18,6 +18,9 @@ import { LastNewsComponent } from './last-news/last-news.component';
     CommonModule,
     NewsRoutingModule,
     CarouselModule
+  ],
+  exports:[
+    NewsComponent
   ]
 })
 export class NewsModule { }

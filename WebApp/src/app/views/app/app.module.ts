@@ -18,7 +18,6 @@ import { ScrollingModule } from '@angular/cdk/scrolling';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { SearchComponent } from './search/search.component';
 import { FormsModule } from '@angular/forms';
-import { CategoryNavbarComponent } from './category-navbar/category-navbar.component';
 
 
 
@@ -29,8 +28,7 @@ import { CategoryNavbarComponent } from './category-navbar/category-navbar.compo
     NavbarComponent,
     ContactUsComponent,
     CategoryComponent,
-    SearchComponent,
-    CategoryNavbarComponent
+    SearchComponent
     
   ],
   imports: [

@@ -14,7 +14,6 @@ declare var FB: any;
 })
 export class NewsItemComponent implements OnInit,AfterViewChecked {
   public window = window;
-
   public newsItemId: number = 0;
 
   public safeVideoLink: SafeResourceUrl = null;
