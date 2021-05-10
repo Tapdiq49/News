@@ -30,13 +30,13 @@ namespace Admin.Controllers
             var model = _mapper.Map<About, AboutViewModel>(about);
             return View(model);
         }
-        public IActionResult Edit(int id)
+        public async Task<IActionResult> Edit(int id)
         {
             if (_admin.Type != ManagerType.SuperAdmin)
             {
                 return NotFound();
             }
-            About about =  _aboutService.GetAboutById(id);
+            About about =  await _aboutService.GetAboutById(id);
 
             if (about == null) return NotFound();
 
@@ -46,13 +46,13 @@ namespace Admin.Controllers
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Edit(AboutViewModel model)
+        public async Task<IActionResult> Edit(AboutViewModel model)
         {
             if (ModelState.IsValid)
             {
                 About about = _mapper.Map<AboutViewModel, About>(model);
 
-                About aboutToUpdate = _aboutService.GetAboutById(model.Id);
+                About aboutToUpdate = await _aboutService.GetAboutById(model.Id);
 
                 aboutToUpdate.ModifiedBy = _admin.Fullname;
 

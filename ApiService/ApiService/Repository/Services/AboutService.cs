@@ -28,9 +28,9 @@ namespace Repository.Services
             return await _context.Abouts.FirstOrDefaultAsync();
         }
 
-        public About GetAboutById(int id)
+        public async Task<About> GetAboutById(int id)
         {
-            return _context.Abouts.Find(id);
+            return await _context.Abouts.FindAsync(id);
         }
     }
 }
