@@ -53,7 +53,14 @@
                                 <td>@item.Title</td>
                                 <td>@item.Category.Name</td>
                                 <td>
-                                    <img width="60" src="@_cloudinaryService.BuildUrl(item.Photos[0].Image)" />
+                                    @for (int i = 0; i < item.Photos.Count; i++)
+                                    {
+                                        @if (item.Photos[i].Main)
+                                        {
+                                            <img width="60" src="@_cloudinaryService.BuildUrl(item.Photos[i].Image)" />
+                                        }
+                                    }
+
                                 </td>
                                 <td class="d-flex justify-content-center">
 

@@ -1,0 +1,27 @@
+#not-found {
+    padding: 120px 0px;
+    background-color: $white-color;
+    .all-section-title {
+        padding-top: 0;
+        h2{
+            margin-bottom: 20px;
+        }
+        a {
+            margin-top: 20px;
+            color: $title-color;
+            font-weight: 700;
+           
+            i{
+                color: $red-color;
+                margin-left: 5px;
+            }
+        }
+    }
+    .error-img{
+        margin-top: 60px;
+        text-align: center;
+        img{
+            max-width: 100%;
+        }
+    }
+}

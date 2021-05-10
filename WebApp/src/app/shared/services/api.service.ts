@@ -17,21 +17,25 @@ export class ApiService {
 
   constructor(private http: HttpClient) { }
 
+  //#region Contact
   public getContact():Observable<IContact>{
     return this.http.get<IContact>(`${environment.apiUrl}/v1/contact`);
   }
+  //#endregion
 
-
+  //#region About
   public getAbout():Observable<IAbout>{
     return this.http.get<IAbout>(`${environment.apiUrl}/v1/about`);
   }
+  //#endregion
 
-
+  //#region Category
   public getCategories():Observable<ICategory[]>{
     return this.http.get<ICategory[]>(`${environment.apiUrl}/v1/category`);
   }
+  //#endregion
 
-  
+  //#region News
   public getNews(count : number):Observable<INewsList>{
     return this.http.get<INewsList>(`${environment.apiUrl}/v1/news?viewCount=${count}`, {withCredentials: true});
   }
@@ -57,7 +61,11 @@ export class ApiService {
   public getSliderNews():Observable<INewsItem[]>{
     return this.http.get<INewsItem[]>(`${environment.apiUrl}/v1/news/slider`);
   }
+  //#endregion
+
+  //#region Search
   public search(search:string,count : number):Observable<INewsList>{
     return this.http.get<INewsList>(`${environment.apiUrl}/v1/news/search?search=${search}&viewCount=${count}`, {withCredentials: true});
   }
+  //#endregion News
 }
