@@ -1,0 +1,251 @@
+#news-list {
+    margin-top: 20px;
+    margin-bottom: 20px;
+  
+    .news-i {
+      position: relative;
+      z-index: 1;
+      display: inline-block;
+      vertical-align: top;
+      width: 100%;
+      margin: 0 0 35px 0;
+      background-color: $white-color;
+      line-height: 0;
+      overflow: hidden;
+      transition: all .4s linear;
+      cursor: pointer;
+  
+      a {
+        .news-i-img-container {
+          position: relative;
+          z-index: 1;
+          display: block;
+  
+          .news-i-img {
+            overflow: hidden;
+            background-size: cover;
+            background-position: center center;
+            background-color: #ddd;
+            height: 277px;
+  
+            img {
+              width: 100%;
+              height: 100%;
+              transition: all .4s linear;
+            }
+          }
+  
+          &::before {
+            content: '';
+            display: block;
+            position: absolute;
+            z-index: 1;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 1px solid rgba(0, 0, 0, 0.14);
+            border-bottom: 0;
+            box-sizing: border-box;
+          }
+        }
+  
+        .news-i-content {
+          height: 160px;
+          padding: 15px 20px 25px 20px;
+          overflow: hidden;
+          border: 1px solid #dddddd;
+          border-width: 0 1px;
+          line-height: 1.5;
+  
+          .when {
+            position: absolute;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            max-width: 60px;
+            opacity: 0.9;
+            line-height: 1;
+            color: $white-color;
+            text-align: center;
+  
+            .when-date {
+              padding: 6px 15px;
+              background-color: #1894A0;
+  
+              .date-day {
+                font-size: 20px;
+              }
+            }
+  
+            .when-time {
+              padding: 5px 15px 3px;
+              background-color: #334564;
+              font-size: 14px;
+              font-weight: bold;
+            }
+          }
+  
+          .when-categories {
+            position: absolute;
+            z-index: 1;
+            right: 0;
+            top: 0;
+            opacity: 0.9;
+            line-height: 1;
+            color: $white-color;
+            text-align: center;
+            padding: 6px 15px;
+            background-color: #1894A0;
+          }
+  
+          .title {
+            margin-bottom: 5px;
+            color: #205cb4;
+            line-height: 1.25;
+            font-weight: bold;
+          }
+        }
+      }
+  
+      .stats {
+        overflow: hidden;
+        background: #f8eded87;
+        border-top: 1px solid #aaa;
+        color: #aaaaaa;
+        font-weight: bold;
+        font-size: 16px;
+        cursor: default;
+        width: 100%;
+        height: 40px;
+        position: absolute;
+        left: 0;
+        bottom: -4px;
+  
+        .stats-i {
+          i {
+            margin-right: 10px;
+          }
+        }
+  
+        .stats_likes,
+        .news-i .stats_dislikes {
+          background-image: none;
+          box-shadow: none !important;
+        }
+  
+        .stats-i-container {
+          box-sizing: border-box;
+          float: left;
+          width: 33.3%;
+          line-height: 38px;
+          border: 0 solid #dddddd;
+          border-top-width: 1px;
+          border-bottom-width: 1px;
+          border-right-width: 1px;
+          background-color: #f2f2f2;
+          text-align: center;
+  
+          &:last-child {
+            float: none;
+            width: auto;
+          }
+  
+          &:last-child {
+            float: none;
+            width: auto;
+          }
+        }
+  
+        .stats_likes {
+          transition: all .4s linear;
+  
+          &:hover {
+            border-color: #006700;
+            background-color: #008d1b;
+            color: $white-color;
+            cursor: pointer;
+          }
+        }
+  
+        .stats_dislikes {
+          transition: all .4s linear;
+  
+          &:hover {
+            border-color: #bf0000;
+            background-color: #dc0000;
+            color: $white-color;
+            cursor: pointer;
+          }
+        }
+        .isLiked{
+          color: #008d1b;
+          &:hover{
+            color: #008d1b;
+            background-color: #f2f2f2;
+            border-color: #ddd;
+            cursor: inherit;
+          }
+        }
+        .liked{
+          color: #aaa;
+          &:hover{
+            color: #aaa;
+            background-color: #f2f2f2;
+            border-color:#ddd;
+            cursor: inherit;
+          }
+        }
+        .isDisliked{
+          color: #dc0000;
+          &:hover{
+            color: #dc0000;
+            background-color: #f2f2f2;
+            border-color: #ddd;
+            cursor: inherit;
+          }
+        }
+        .disliked{
+          color: #aaa;
+          &:hover{
+            color: #aaa;
+            background-color: #f2f2f2;
+            border-color:#ddd;
+            cursor: inherit;
+          }
+        }
+      }
+  
+      &:hover {
+        box-shadow: 1px 1px 17px 9px rgba(0, 0, 0, 0.14);
+  
+        .news-i-img-container {
+          .news-i-img {
+            transition: all .4s linear;
+  
+            img {
+              transform: scale(1.1);
+            }
+          }
+  
+        }
+  
+      }
+    }
+  }
+  
+  #slider {
+    margin-top: 30px;
+    padding-bottom: 26px;
+    margin-bottom: 21px;
+    border-bottom: 2px solid $border-color;
+  }
+  
+  .loadMore {
+    background: $red-color;
+    border-radius: 8px;
+    border: none;
+    color: $white-color;
+    padding: 10px 60px;
+  }
+  

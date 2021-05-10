@@ -1,42 +1,36 @@
 <div class="header-navbar">
   <nav class="navbar navbar-expand-lg navbar-light ">
         <button class="navbar-toggler" (click)="openMenu($event)" type="button">
-            <i class="fas fa-bars"></i>
+            <i class="icon-bars"></i>
         </button>
         <div class="navbar-menus">
           <div class="head d-lg-none">
             <a routerLink="/" (click)="closeMenu($event)">
               <span class="logo">Xeberim.az</span>
             </a>
-            <i class="close-button fas fa-times" (click)="closeMenu($event)"></i>
+            <i class="icon-close" (click)="closeMenu($event)"></i>
           </div>
-            <ul class="social-links d-lg-none">
+            <ul class="social d-lg-none">
               <li class="ng-star-inserted">
-                <a href="https://www.facebook.com/qazetaz/">
-                  <i class="fa-facebook fa-facebook-f fab"></i>
+                <a href="https://www.facebook.com/tapo49" target="_blank">
+                  <i class="icon-facebook"></i>
                 </a>
               </li>
               <li class="ng-star-inserted">
-                <a href="https://www.instagram.com/qazetaz/">
-                  <i class="fa-instagram fa-instagram-f fab"></i>
+                <a href="https://www.instagram.com/alishov.49/" target="_blank">
+                  <i class="icon-instagram"></i>
                 </a>
               </li>
               <li class="ng-star-inserted">
-                <a href="https://twitter.com/qazetaz1">
-                  <i class="fa-twitter fa-twitter-f fab"></i>
+                <a href="https://twitter.com/tapdiq49" target="_blank">
+                  <i class="icon-twitter"></i>
                 </a>
               </li>
               <li class="ng-star-inserted">
-                <a>
-                  <i class="fa-youtube fa-youtube-f fab"></i>
+                <a href="https://www.youtube.com/channel/UCOdPpOk5HsQcve5PHYSP5IQ" target="_blank">
+                  <i class="icon-youtube-play"></i>
                 </a>
               </li>
-              <li class="ng-star-inserted">
-                <a href="https://t.me/gazetaz">
-                  <i class="fa-telegram fa-telegram-f fab"></i>
-                </a>
-              </li>
-              <!---->
             </ul>
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item" *ngFor="let category of categories;let i = index">

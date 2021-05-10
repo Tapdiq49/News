@@ -37,9 +37,9 @@
             </div>
           </a>
           <div class="stats">
-            <div [ngClass]="{'isLiked': item.liked, 'disliked' : item.disliked}" (click)="newsLike(item.id)" class="stats-i-container stats-like-active stats_likes"><span class="stats-i"><i class="fas fa-thumbs-up"></i>{{ item.like }}</span></div>
-            <div [ngClass]="{'isDisliked': item.disliked, 'liked': item.liked}" (click)="newsDislike(item.id)" class="stats-i-container stats-like-active stats_dislikes"><span class="stats-i"><i class="fas fa-thumbs-down"></i>{{ item.dislike }}</span></div>
-            <div class="stats-i-container stats_views"><span class="stats-i"><i class="fas fa-eye"></i>{{ item.view }}</span></div>
+            <div [ngClass]="{'isLiked': item.liked, 'disliked' : item.disliked}" (click)="newsLike(item.id)" class="stats-i-container stats-like-active stats_likes"><span class="stats-i"><i class="icon-thumbs-up"></i>{{ item.like }}</span></div>
+            <div [ngClass]="{'isDisliked': item.disliked, 'liked': item.liked}" (click)="newsDislike(item.id)" class="stats-i-container stats-like-active stats_dislikes"><span class="stats-i"><i class="icon-thumbs-down"></i>{{ item.dislike }}</span></div>
+            <div class="stats-i-container stats_views"><span class="stats-i"><i class="icon-eye"></i>{{ item.view }}</span></div>
           </div>
         </div>
       </div>

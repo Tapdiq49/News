@@ -1,4 +1,17 @@
 /* You can add global styles to this file, and also import other style files */
 @import '~bootstrap/scss/bootstrap.scss';
-@import '../src/assets/scss/home';
+@import './assets/scss/iconmoon-icons';
+@import './assets/scss/variables';
+@import './assets/scss/website';
+@import './assets/scss/components/news';
+@import './assets/scss/components/news-item';
+@import './assets/scss/components/about';
+@import './assets/scss/components/category';
+@import './assets/scss/components/owl-carousel';
+@import './assets/scss/components/navbar';
+@import './assets/scss/components/search';
+@import './assets/scss/components/slider';
+@import './assets/scss/components/contact-info';
+@import './assets/scss/components/home';
+
 
