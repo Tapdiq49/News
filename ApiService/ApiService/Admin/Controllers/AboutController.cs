@@ -58,7 +58,7 @@ namespace Admin.Controllers
 
                 if (aboutToUpdate == null) return NotFound();
 
-                _aboutService.AboutToUpdate(aboutToUpdate, about);
+                await _aboutService.AboutToUpdate(aboutToUpdate, about);
 
                 return RedirectToAction("index");
             }

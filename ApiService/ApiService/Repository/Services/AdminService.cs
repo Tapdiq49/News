@@ -49,11 +49,11 @@ namespace Repository.Services
             return true;
         }
 
-        public void DeleteAdmin(Admin admin)
+        public async Task DeleteAdmin(Admin admin)
         {
             _context.Admins.Remove(admin);
 
-            _context.SaveChanges();
+            await _context.SaveChangesAsync();
         }
 
         public async Task ForgetPassword(string email)
@@ -86,9 +86,9 @@ namespace Repository.Services
             return await _context.Admins.ToListAsync();
         }
 
-        public Admin Login(string email, string password)
+        public async Task<Admin> Login(string email, string password)
         {
-            Admin admin = _context.Admins.FirstOrDefault(a => a.Email == email);
+            Admin admin = await _context.Admins.FirstOrDefaultAsync(a => a.Email == email);
 
             if (admin != null && CryptoHelper.Crypto.VerifyHashedPassword(admin.Password, password))
             {
@@ -98,13 +98,13 @@ namespace Repository.Services
             return null;
         }
 
-        public void Logout(int id)
+        public async Task Logout(int id)
         {
             var admin = _context.Admins.Find(id);
 
             admin.Token = null;
 
-            _context.SaveChanges();
+            await _context.SaveChangesAsync();
 
         }
 
@@ -124,9 +124,9 @@ namespace Repository.Services
             return admin;
         }
 
-        public void UpdateToken(int id, string token)
+        public async Task UpdateToken(int id, string token)
         {
-            Admin admin = _context.Admins.Find(id);
+            Admin admin = await _context.Admins.FindAsync(id);
 
             admin.Token = token;
 

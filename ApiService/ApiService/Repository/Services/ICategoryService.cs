@@ -12,6 +12,6 @@ namespace Repository.Services
         Task<Category> CreateCategory(Category category);
         Task<Category> GetCategoryById(int id);
         Task UpdateCategory(Category categoryToUpdate, Category category);
-        void DeleteCategory(Category category);
+        Task DeleteCategory(Category category);
     }
 }

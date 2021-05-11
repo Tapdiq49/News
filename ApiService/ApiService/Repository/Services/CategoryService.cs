@@ -28,11 +28,11 @@ namespace Repository.Services
             return category;
         }
 
-        public void DeleteCategory(Category category)
+        public async Task DeleteCategory(Category category)
         {
              _context.Categories.Remove(category);
 
-            _context.SaveChanges();
+            await _context.SaveChangesAsync();
         }
 
         public async Task<IEnumerable<Category>> GetAllCategories()

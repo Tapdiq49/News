@@ -97,7 +97,7 @@ namespace Admin.Controllers
 
             if (category == null) return NotFound();
 
-            _categoryService.DeleteCategory(category);
+            await _categoryService.DeleteCategory(category);
 
             return RedirectToAction("index");
         }

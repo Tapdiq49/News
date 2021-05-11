@@ -51,14 +51,14 @@ namespace Admin.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Create(NewsViewModel model)
+        public async Task<IActionResult> Create(NewsViewModel model)
         {
             if (ModelState.IsValid)
             {
                 var news = _mapper.Map<NewsViewModel, News>(model);
                 news.ModifiedBy = _admin.Fullname;
 
-                _newsService.CreateNews(news);
+                await _newsService.CreateNews(news);
 
                 return RedirectToAction("index");
             }
@@ -67,7 +67,7 @@ namespace Admin.Controllers
         }
         public async Task<IActionResult> Edit(int id)
         {
-            var news =  _newsService.GetNewsById(id);
+            var news =  await _newsService.GetNewsById(id);
 
             if (news == null) return NotFound();
 
@@ -91,20 +91,20 @@ namespace Admin.Controllers
                 {
                     newsPhotos.Add(_mapper.Map<NewsPhotoViewModel, NewsPhoto>(item));
                 }
-                var newsToUpdate = _newsService.GetNewsById(model.Id);
+                var newsToUpdate = await _newsService.GetNewsById(model.Id);
            
 
                 if (newsToUpdate == null) return NotFound();
 
                 news.ModifiedBy = _admin.Fullname;
 
-                _newsService.UpdateNews(newsToUpdate, news);
+                await _newsService.UpdateNews(newsToUpdate, news);
                 foreach (var item in newsPhotos)
                 {
-                    var newsPhotoUpdate = _newsService.GetNewsPhotoById(item.Id);
+                    var newsPhotoUpdate = await _newsService.GetNewsPhotoById(item.Id);
                     if (newsPhotoUpdate == null) return NotFound();
                     item.ModifiedBy = _admin.Fullname;
-                    _newsService.UpdateNewsPhoto(newsPhotoUpdate, item);
+                    await _newsService.UpdateNewsPhoto(newsPhotoUpdate, item);
                 }
                 
 
@@ -117,13 +117,13 @@ namespace Admin.Controllers
 
         }
 
-        public IActionResult Delete(int id)
+        public async Task<IActionResult> Delete(int id)
         {
-            News news = _newsService.GetNewsById(id);
+            News news = await _newsService.GetNewsById(id);
 
             if (news == null) return NotFound();
 
-            _newsService.DeleteNews(news);
+            await _newsService.DeleteNews(news);
 
             return RedirectToAction("index");
         }
@@ -155,11 +155,11 @@ namespace Admin.Controllers
         }
 
         [HttpPost]
-        public IActionResult Remove(string name, int? id)
+        public async Task<IActionResult> Remove(string name, int? id)
         {
             if (id != null)
             {
-                _newsService.RemovePhotoById((int)id);
+                await _newsService.RemovePhotoById((int)id);
             }
 
             _cloudinaryService.Delete(name);

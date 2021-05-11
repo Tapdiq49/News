@@ -30,13 +30,13 @@ namespace Admin.Controllers
             var model = _mapper.Map<Contact, ContactViewModel>(contact);
             return View(model);
         }
-        public IActionResult Edit(int id)
+        public async Task<IActionResult> Edit(int id)
         {
             if (_admin.Type != ManagerType.SuperAdmin)
             {
                 return NotFound();
             }
-            Contact contact = _contactService.GetContactById(id);
+            Contact contact = await _contactService.GetContactById(id);
 
             if (contact == null) return NotFound();
 
@@ -46,19 +46,19 @@ namespace Admin.Controllers
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Edit(ContactViewModel model)
+        public async Task<IActionResult> Edit(ContactViewModel model)
         {
             if (ModelState.IsValid)
             {
                 Contact contact = _mapper.Map<ContactViewModel, Contact>(model);
 
-                Contact contactToUpdate = _contactService.GetContactById(model.Id);
+                Contact contactToUpdate = await _contactService.GetContactById(model.Id);
 
                 contactToUpdate.ModifiedBy = _admin.Fullname;
 
                 if (contactToUpdate == null) return NotFound();
 
-                _contactService.ContactToUpdate(contactToUpdate, contact);
+                await _contactService.ContactToUpdate(contactToUpdate, contact);
 
                 return RedirectToAction("index");
             }

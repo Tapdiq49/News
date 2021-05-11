@@ -6,7 +6,7 @@ namespace Repository.Services
     public interface IContactService
     {
         Task<Contact> GetContact();
-        Contact GetContactById(int id);
-        void ContactToUpdate(Contact contactToUpdate, Contact contact);
+        Task<Contact> GetContactById(int id);
+        Task ContactToUpdate(Contact contactToUpdate, Contact contact);
     }
 }

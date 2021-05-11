@@ -27,17 +27,17 @@ namespace Admin.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Login(LoginViewModel model)
+        public async Task<IActionResult> Login(LoginViewModel model)
         {
             if (ModelState.IsValid)
             {
-                var admin = _adminService.Login(model.Email, model.Password);
+                var admin = await _adminService.Login(model.Email, model.Password);
 
                 if (admin != null)
                 {
                     admin.Token = Guid.NewGuid().ToString();
 
-                    _adminService.UpdateToken(admin.Id, admin.Token);
+                    await _adminService.UpdateToken(admin.Id, admin.Token);
 
                     Response.Cookies.Append("admin-token", admin.Token, new Microsoft.AspNetCore.Http.CookieOptions
                     {
@@ -55,9 +55,9 @@ namespace Admin.Controllers
         }
 
         [TypeFilter(typeof(Auth))]
-        public IActionResult Logout()
+        public async Task<IActionResult> Logout()
         {
-            _adminService.Logout(_admin.Id);
+            await _adminService.Logout(_admin.Id);
 
             return RedirectToAction("login", "account");
         }

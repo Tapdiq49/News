@@ -14,13 +14,13 @@ namespace Repository.Services
             _context = context;
         }
 
-        public void AboutToUpdate(About aboutToUpdate, About about)
+        public async Task AboutToUpdate(About aboutToUpdate, About about)
         {
             aboutToUpdate.ModifiedAt = DateTime.Now;
             aboutToUpdate.Text = about.Text;
             aboutToUpdate.Title = about.Title;
 
-            _context.SaveChanges();
+            await _context.SaveChangesAsync();
         }
 
         public async Task<About> GetAbout()

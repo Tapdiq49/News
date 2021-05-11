@@ -18,13 +18,13 @@ namespace Repository.Services
             _context = context;
         }
 
-        public News CreateNews(News news)
+        public async Task<News> CreateNews(News news)
         {
             news.CreatedAt = DateTime.Now;
 
-             _context.News.Add(news);
+             await _context.News.AddAsync(news);
 
-             _context.SaveChanges();
+             await _context.SaveChangesAsync();
 
             return news;
         }
@@ -81,9 +81,9 @@ namespace Repository.Services
             return await _context.News.OrderByDescending(e => e.View).Where(e => !e.SoftDeleted).ToListAsync();
         }
 
-        public News GetNewsById(int id)
+        public async Task<News> GetNewsById(int id)
         {
-            return  _context.News.Include(n => n.Photos).Include(n => n.Category).FirstOrDefault(e=> e.Id == id);
+            return  await _context.News.Include(n => n.Photos).Include(n => n.Category).FirstOrDefaultAsync(e=> e.Id == id);
         }
 
         public async Task<NewsResponse> GetSearchByTitleLike(string search, int viewCount)
@@ -133,32 +133,32 @@ namespace Repository.Services
             return news;
         }
 
-        public void RemovePhotoById(int id)
+        public async Task RemovePhotoById(int id)
         {
 
-            NewsPhoto newsPhoto = _context.NewsPhotos.Find(id);
+            NewsPhoto newsPhoto = await _context.NewsPhotos.FindAsync(id);
 
-            var n = _context.NewsPhotos.Where(e => e.NewsId == newsPhoto.NewsId && e.OrderBy > newsPhoto.OrderBy).OrderBy(e => e.OrderBy).ToList();
+            var n = await _context.NewsPhotos.Where(e => e.NewsId == newsPhoto.NewsId && e.OrderBy > newsPhoto.OrderBy).OrderBy(e => e.OrderBy).ToListAsync();
 
             _context.NewsPhotos.Remove(newsPhoto);
-            _context.SaveChanges();
+            await _context.SaveChangesAsync();
 
             foreach (var item in n)
             {
                 item.OrderBy -= 1;
-                _context.SaveChanges();
+                await _context.SaveChangesAsync();
             }
 
            
         }
 
-        public void AddPhoto(NewsPhoto newsPhoto)
+        public async Task AddPhoto(NewsPhoto newsPhoto)
         {
-            _context.NewsPhotos.Add(newsPhoto);
-            _context.SaveChanges();
+            await _context.NewsPhotos.AddAsync(newsPhoto);
+            await _context.SaveChangesAsync();
         }
 
-        public void UpdateNews(News newsToUpdate, News news)
+        public async Task UpdateNews(News newsToUpdate, News news)
         {
            
             newsToUpdate.SoftDeleted = news.SoftDeleted;
@@ -170,29 +170,29 @@ namespace Repository.Services
             newsToUpdate.ModifiedAt = DateTime.Now;
             newsToUpdate.VideoLink = news.VideoLink;
 
-            _context.SaveChanges();
+            await _context.SaveChangesAsync();
         }
 
-        public void DeleteNews(News news)
+        public async Task DeleteNews(News news)
         {
            
             _context.News.Remove(news);
 
-            _context.SaveChanges();
+            await _context.SaveChangesAsync();
         }
 
-        public NewsPhoto GetNewsPhotoById(int id)
+        public async Task<NewsPhoto> GetNewsPhotoById(int id)
         {
-            return _context.NewsPhotos.FirstOrDefault(e => e.Id == id);
+            return await _context.NewsPhotos.FirstOrDefaultAsync(e => e.Id == id);
         }
 
-        public void UpdateNewsPhoto(NewsPhoto newsPhotoToUpdate, NewsPhoto newsPhoto)
+        public async Task UpdateNewsPhoto(NewsPhoto newsPhotoToUpdate, NewsPhoto newsPhoto)
         {
             newsPhotoToUpdate.Main = newsPhoto.Main;
             newsPhotoToUpdate.ModifiedAt = DateTime.Now;
             newsPhotoToUpdate.ModifiedBy = newsPhoto.ModifiedBy;
 
-            _context.SaveChanges();
+            await _context.SaveChangesAsync();
         }
     }
 }

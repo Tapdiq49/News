@@ -17,13 +17,13 @@ namespace Repository.Services
         Task<IEnumerable<News>> GetNewsSortedByLike();
         Task<News> LikeDislike(string token, int newsId, bool isLiked);
         Task<IEnumerable<News>> GetNews();
-        News CreateNews(News news);
-        News GetNewsById(int id);
-        void RemovePhotoById(int id);
-        void AddPhoto(NewsPhoto newsPhoto);
-        void UpdateNews(News newsToUpdate, News news);
-        void DeleteNews(News news);
-        NewsPhoto GetNewsPhotoById(int id);
-        void UpdateNewsPhoto(NewsPhoto newsPhotoToUpdate, NewsPhoto newsPhoto);
+        Task<News> CreateNews(News news);
+        Task<News> GetNewsById(int id);
+        Task RemovePhotoById(int id);
+        Task AddPhoto(NewsPhoto newsPhoto);
+        Task UpdateNews(News newsToUpdate, News news);
+        Task DeleteNews(News news);
+        Task<NewsPhoto> GetNewsPhotoById(int id);
+        Task UpdateNewsPhoto(NewsPhoto newsPhotoToUpdate, NewsPhoto newsPhoto);
     }
 }

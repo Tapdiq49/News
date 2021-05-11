@@ -7,6 +7,6 @@ namespace Repository.Services
     {
         Task<About> GetAbout();
         Task<About> GetAboutById(int id);
-        void AboutToUpdate(About aboutToUpdate, About about);
+        Task AboutToUpdate(About aboutToUpdate, About about);
     }
 }

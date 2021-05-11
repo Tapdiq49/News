@@ -71,7 +71,7 @@ namespace Admin.Controllers
 
             if (admin == null) return NotFound();
 
-            _adminService.DeleteAdmin(admin);
+            await _adminService.DeleteAdmin(admin);
 
             return RedirectToAction("index");
         }

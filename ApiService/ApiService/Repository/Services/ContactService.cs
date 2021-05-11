@@ -14,14 +14,14 @@ namespace Repository.Services
             _context = context;
         }
 
-        public void ContactToUpdate(Contact contactToUpdate, Contact contact)
+        public async Task ContactToUpdate(Contact contactToUpdate, Contact contact)
         {
             contactToUpdate.ModifiedAt = DateTime.Now;
             contactToUpdate.Phone = contact.Phone;
             contactToUpdate.Address = contact.Address;
             contactToUpdate.Email = contact.Email;
 
-            _context.SaveChanges();
+           await _context.SaveChangesAsync();
 
         }
 
@@ -30,9 +30,9 @@ namespace Repository.Services
             return await _context.Contacts.FirstOrDefaultAsync();
         }
 
-        public Contact GetContactById(int id)
+        public async Task<Contact> GetContactById(int id)
         {
-            return _context.Contacts.Find(id);
+            return await _context.Contacts.FindAsync(id);
         }
     }
 }
