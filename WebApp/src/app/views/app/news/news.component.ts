@@ -67,6 +67,9 @@ export class NewsComponent implements OnInit {
               this.news.news = news.news;
             }
             this.news.count = news.count;
+          },
+          err => {
+            this.router.navigate(['error/not-found']);
           }
         )
       }else{
@@ -85,6 +88,9 @@ export class NewsComponent implements OnInit {
               this.news.news = news.news;
             }
             this.news.count = news.count;
+          },
+          err => {
+            this.router.navigate(['error/not-found']);
           }
         )
       }

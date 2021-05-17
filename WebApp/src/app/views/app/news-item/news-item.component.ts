@@ -66,6 +66,9 @@ export class NewsItemComponent implements OnInit,AfterViewChecked {
         if (this.newsItem.videoLink) {
           this.safeVideoLink = this._sanitizer.bypassSecurityTrustResourceUrl(this.newsItem.videoLink);
         }     
+      },
+      err => {
+        this.router.navigate(['error/not-found']);
       }
     )
 
