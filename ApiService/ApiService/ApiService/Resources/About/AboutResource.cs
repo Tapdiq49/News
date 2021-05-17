@@ -1,5 +1,4 @@
-﻿
-namespace ApiService.Resources.About
+﻿namespace ApiService.Resources.About
 {
     public class AboutResource
     {

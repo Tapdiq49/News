@@ -12,7 +12,9 @@
                   <span class="publishDay">
                     <span class="time">{{ newsItem.createdAt | date:'H:mm' }}</span>
                     <span class="date">{{ newsItem.createdAt | date:'dd, MMM, yyyy' }}</span>
+                    <span class="ms-5">{{newsItem.view}} dəfə baxılıb</span>
                   </span>
+                 
                 </div>
               </div>
               <!---->
@@ -66,3 +68,7 @@
     </div>
   </div>
 </section>
+<div class="container">
+  <div class="other-category">Digər {{newsItem.category.name}} xəbərləri</div>
+</div>
+<app-news-by-category [cat]="newsItem.categoryId"></app-news-by-category>

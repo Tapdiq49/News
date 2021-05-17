@@ -5,9 +5,6 @@ using Microsoft.AspNetCore.Mvc;
 using Repository.Data.Entities;
 using Repository.Enums;
 using Repository.Services;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace Admin.Controllers

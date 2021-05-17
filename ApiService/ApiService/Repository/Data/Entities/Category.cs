@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-
-namespace Repository.Data.Entities
+﻿namespace Repository.Data.Entities
 {
     public class Category : BaseEntity
     {

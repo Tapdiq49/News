@@ -4,10 +4,6 @@ using Admin.Models.Manager;
 using Admin.Models.News;
 using AutoMapper;
 using Repository.Data.Entities;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace Admin.Mapping
 {

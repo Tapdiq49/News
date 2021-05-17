@@ -1,13 +1,10 @@
 ﻿using ApiService.Resources.News;
-using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Repository.Data.Entities;
 using Repository.Exceptions;
 using Repository.Models;
 using Repository.Services;
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 

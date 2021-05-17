@@ -6,6 +6,7 @@ import { NewsItemComponent } from './news-item.component';
 import { LastNewsComponent } from './last-news/last-news.component';
 import { ContactInfoComponent } from './contact-info/contact-info.component';
 import { NewsModule } from '../news/news.module';
+import { NewsByCategoryComponent } from './news-by-category/news-by-category.component';
 
 
 
@@ -13,7 +14,8 @@ import { NewsModule } from '../news/news.module';
   declarations: [
     NewsItemComponent,
     LastNewsComponent,
-    ContactInfoComponent
+    ContactInfoComponent,
+    NewsByCategoryComponent
   ],
   imports: [
     CommonModule,

@@ -69,7 +69,7 @@
                 </div>
 
                 <div class="form-group gallery">
-                    <label for="files" type="button" id="uploader" class="btn btn-secondary">Şəkillər əlavə edin</label>
+                    <label for="files" type="button" id="uploader" class="btn btn-secondary">Şəkillər əlavə edin +</label>
                     <input type="file" name="files" id="files" multiple="" class="d-none" accept="image/*">
                     <div class="photos">
                         @for (int i = 0; i < Model.Photos.Count; i++)
@@ -167,6 +167,13 @@
             }
             obj.value = "true";
             obj.checked = true;
+        }
+        function checkMainPhoto() {
+            let allPhotos = document.getElementsByClassName("news-photo");
+            if (allPhotos.length == 1) {
+                allPhotos[0].value = "true";
+                allPhotos[0].checked = true;
+            }
         }
     </script>
 }
